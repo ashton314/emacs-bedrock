@@ -1,12 +1,16 @@
 ;;; Basic packages to improve life
 
 ;;; Navigation
+
+;; Avy: move around buffers with ease
 (use-package avy
   :ensure t
   :bind (("C-c j" . avy-goto-line)
          ("s-j"   . avy-goto-char-timer)))
 
-;;; Helps
+;;; Discovery
+
+;; which-key: shows a popup of available keybindings
 (use-package which-key
   :ensure t
   :config
