@@ -2,17 +2,22 @@
 
 Stepping stones to a better Emacs experience
 
-**ACHTUNG!**
-
-This makes use of some Emacs 29.1 features! Fortunately these features should all be stable, but you will have serious troubles if you try using this unmodified on anything earlier.
-
-For testing, you can run `emacs --init-directory path/to/emacs-bedrock/` and all the customizations and package installations will be isolated to the project directory. Emacs should only add files that are already in the `.gitignore`.
-
 ## Synopsis
 
 An *extremely* minimal Emacs starter kit uses *no* external packages by default, and only ELPA packages on an opt-in basis. Intended to be copied once and then modified as the user grows in knowledge and power.
 
+ - [Project homepage](https://sr.ht/~ashton314/emacs-bedrock/)
+ - [Issue Tracker](https://todo.sr.ht/~ashton314/emacs-bedrock)
+
 ## Description
+
+**ACHTUNG!**
+
+This makes use of some Emacs 29.1 features! Fortunately these features should all be stable, but you will have serious troubles if you try using this unmodified on anything earlier. (Features: `help-quick`, built-in `use-package`.)
+
+For testing, you can run `emacs --init-directory path/to/emacs-bedrock/` and all the customizations and package installations will be isolated to the project directory. Emacs should only add files that are already in the `.gitignore`.
+
+--------------------------------------------------------------------------------
 
 This is a minimal Emacs starter kit. Like, *really* minimal. Here's the short of the philosophy:
 
@@ -94,6 +99,10 @@ This is version `0.0.1`.
 Once I am happy with the state of things, I'll change it to version `1.*.*`—at that point, no new `use-package` declarations will be added to `init.el`.
 
 This is a hobby project. Please be patient.
+
+### Roadmap
+
+See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHut.
 
 ## Authors
 
