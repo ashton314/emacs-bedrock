@@ -12,6 +12,12 @@
   :config
   (which-key-mode))
 
+;;; Utilities
+
+;; Magit: best Git client to ever exist
+(use-package magit
+  :ensure t)
+
 ;;; Minibuffer and completion
 
 ;; Vertico: better vertical completion for minibuffer commands
@@ -35,17 +41,17 @@
 
 ;; Part of corfu
 (use-package corfu-popupinfo
-    :after corfu
-    :hook (corfu-mode . corfu-popupinfo-mode)
-    :bind (:map corfu-map
-                ("M-h" . corfu-popupinfo-toggle)
-                ("M-k" . corfu-popupinfo-scroll-down)
-                ("M-j" . corfu-popupinfo-scroll-up))
-    :custom
-    (corfu-popupinfo-delay '(0.25 . 0.1))
-    (corfu-popupinfo-hide nil)
-    :config
-    (corfu-popupinfo-mode))
+  :after corfu
+  :hook (corfu-mode . corfu-popupinfo-mode)
+  :bind (:map corfu-map
+              ("M-h" . corfu-popupinfo-toggle)
+              ("M-k" . corfu-popupinfo-scroll-down)
+              ("M-j" . corfu-popupinfo-scroll-up))
+  :custom
+  (corfu-popupinfo-delay '(0.25 . 0.1))
+  (corfu-popupinfo-hide nil)
+  :config
+  (corfu-popupinfo-mode))
 
 ;; Make corfu popup come up in terminal overlay
 (use-package corfu-terminal
@@ -56,6 +62,7 @@
 
 ;; Pretty icons for corfu
 (use-package kind-icon
+  :if (display-graphic-p)
   :ensure t
   :after corfu
   :config
@@ -64,8 +71,7 @@
 ;; Consult: Misc. enhanced commands
 (use-package consult
   :ensure t
-  :bind (
-         ("C-x b" . consult-buffer) ;; orig. switch-to-buffer
+  :bind (("C-x b" . consult-buffer) ;; orig. switch-to-buffer
          ("M-y" . consult-yank-pop) ;; orig. yank-pop
          ("C-s" . consult-line)     ;; orig. isearch
          ))
@@ -89,6 +95,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; Fire up the help buffer
-(help-quick)

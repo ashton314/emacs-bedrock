@@ -1,8 +1,7 @@
 ;;; Basic settings for speed and convenience
 (setq gc-cons-threshold 100000000)
 (setq byte-compile-warnings '(not obsolete))
-(setq warning-suppress-log-types '((comp)))
-(setq bidi-inhibit-bpa t)                                        ; turn this off if you need right-to-left text
+(setq warning-suppress-log-types '((comp) (bytecomp)))
 (setq x-underline-at-descent-line nil)
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -16,15 +15,17 @@
 
 (setq-default show-trailing-whitespace nil)
 (setq-default indicate-buffer-boundaries 'left)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq-default fill-column 80)
 
-;; horizontal scrolling
+;; We won't set these, but they're good to know about
+;;
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 4)
+
+;; Enable horizontal scrolling
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
 
-;; minibuffer/completion
+;; Minibuffer/completion
 ;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
 (setq enable-recursive-minibuffers t)
 (setq completion-cycle-threshold 1)
@@ -66,7 +67,10 @@
 
 ;;; Completion
 (fido-vertical-mode)
-(setq completion-styles '(initials flex))
+(setq completion-styles '(basic initials substring))
 
 ;;; Line numbers
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;;; Help buffer
+(add-hook 'after-init-hook 'help-quick)
