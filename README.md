@@ -93,4 +93,4 @@ For testing, you can run `emacs --init-directory path/to/emacs-bedrock/` and all
 
 ## Authors
 
- - Ashton Wiersdorf
+ - Ashton Wiersdorf https://lambdaland.org
