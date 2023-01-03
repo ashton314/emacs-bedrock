@@ -1,6 +1,7 @@
 ;;; Basic settings for speed and convenience
 (setq gc-cons-threshold 100000000)
 (setq byte-compile-warnings '(not obsolete))
+(setq warning-suppress-log-types '((comp)))
 (setq bidi-inhibit-bpa t)                                        ; turn this off if you need right-to-left text
 (setq x-underline-at-descent-line nil)
 (setq line-number-mode t)
@@ -24,9 +25,12 @@
 (setq mouse-wheel-flip-direction t)
 
 ;; minibuffer/completion
+;; https://www.masteringemacs.org/article/understanding-minibuffer-completion
 (setq enable-recursive-minibuffers t)
 (setq completion-cycle-threshold 1)
+(setq completions-detailed t)
 (setq tab-always-indent 'complete)
+(define-key minibuffer-mode-map (kbd "TAB") 'minibuffer-complete)
 
 ;;; Enable/disable various modes
 (blink-cursor-mode -1)
@@ -34,10 +38,10 @@
 (savehist-mode)
 (global-auto-revert-mode)
 (pixel-scroll-precision-mode)
+(global-hl-line-mode)
 
 ;; Silence stupid startup message
-(put 'inhibit-startup-echo-area-message 'saved-value
-     (setq inhibit-startup-echo-area-message (user-login-name)))
+(setq inhibit-startup-echo-area-message (user-login-name))
 
 ;;; tab-bar config: always show, put time in tab-bar
 (setq tab-bar-show 0)                   ; Always show tab bar
@@ -60,3 +64,9 @@
 ;; Use this if you like light mode
 ;(load-theme 'modus-operandi)
 
+;;; Completion
+(fido-vertical-mode)
+(setq completion-styles '(initials flex))
+
+;;; Line numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
