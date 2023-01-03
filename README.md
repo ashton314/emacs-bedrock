@@ -4,10 +4,12 @@ Stepping stones to a better Emacs experience
 
 ## Synopsis
 
-An *extremely* minimal Emacs starter kit uses *no* external packages by default, and only ELPA packages on an opt-in basis. Intended to be copied once and then modified as the user grows in knowledge and power.
+An *extremely* minimal Emacs starter kit uses *no* external packages by default, and only GNU-ELPA packages on an opt-in basis. Intended to be copied once and then modified as the user grows in knowledge and power.
 
  - [Project homepage](https://sr.ht/~ashton314/emacs-bedrock/)
  - [Issue Tracker](https://todo.sr.ht/~ashton314/emacs-bedrock)
+ - Mirrors:
+   - [GitHub](https://github.com/ashton314/emacs-bedrock)
 
 ## Description
 
@@ -84,7 +86,7 @@ Bedrock encourages inspection and modification. I don't plan on making some core
 
 As an example of a deliberate choice, the `help-quick` buffer pops open on startup. Once a user has gotten used to this, they can just go into their `early-init.el` file and modify it themselves to remove that hook if they don't like it. It's a simple one-line change, and only users who are ready for it will do it.
 
-When I started learning Emacs, my dad gave me his `.emacs` file. (That's what we used back in ye olden days instead of `.emacs.d/init.el` and stuff.) I used it without modification for many years. Eventually I learned how to write my own functions and customizations. This package aims to give other users a similar experience.
+When I started learning Emacs, my dad gave me his `.emacs` file. (That's what we used back in ye olden days instead of `.emacs.d/init.el` and stuff.) I used it without modification for many years. Eventually I learned how to write my own functions and customizations. This package aims to give other users a similar experience. When someone comes to me and expresses their desire to learn Emacs, I can point them at this to help them get over the initial hump, but not coddle them so much that they're afraid or unable to change things to their liking.
 
 ## Requirements
 
