@@ -47,10 +47,6 @@
 (use-package corfu-popupinfo
   :after corfu
   :hook (corfu-mode . corfu-popupinfo-mode)
-  :bind (:map corfu-map
-              ("M-h" . corfu-popupinfo-toggle)
-              ("M-k" . corfu-popupinfo-scroll-down)
-              ("M-j" . corfu-popupinfo-scroll-up))
   :custom
   (corfu-popupinfo-delay '(0.25 . 0.1))
   (corfu-popupinfo-hide nil)
