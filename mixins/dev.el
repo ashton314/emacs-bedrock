@@ -25,3 +25,15 @@
 ;;;   Common file types
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package markdown-mode
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
+
+;; You're almost certain to find a mode for the language you're looking for.
+;; Search the internet to find the right one.

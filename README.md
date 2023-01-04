@@ -42,19 +42,30 @@ There are two files of interest: `early-init.el` and `init.el`.
 The early init file uses *strictly* built-in Emacs features to do the following:
 
  - Improve startup time
- - Add minor UI niceties (e.g. clock in the tab-bar, full-screen by default, etc.)
- - Set the default theme (`modus-vivendi`)
- - Turn on discovery aids (e.g. `help-quick`, `fido-vertical-mode`, etc.)
-
-This should be a decent start to improving the out-of-the-box behavior of Emacs.
+ - Set up initial frame behavior
 
 ### `init.el`
 
-For those who'd like a little more help in making Emacs comfortable and discoverable, the `init.el` file provided adds the following packages:
+This is where the meat of all configuration goes. This file:
+
+ - Add minor UI niceties (e.g. clock in the tab-bar, full-screen by default, etc.)
+ - Set the default theme (`modus-vivendi`)
+ - Turn on discovery aids (e.g. `help-quick`, `fido-vertical-mode`, [which-key](https://github.com/justbur/emacs-which-key), etc.)
+
+### Mixins
+
+For those who'd like a little more help in tailoring Emacs for specific purposes, the `mixins/` folder contains a few files that can be included via `(load-file "mixin/mixin-name.el")` from the `init.el` file, or copied wholesale or in part into `init.el` directly.
+
+Mixins:
+
+ - UI Enhancements
+ - Development tools
+
+#### `mixins/ui.el`
+
+Packages this mixin uses:
 
  - [avy](https://github.com/abo-abo/avy)
- - [which-key](https://github.com/justbur/emacs-which-key)
- - [magit](https://magit.vc)
  - [vertico](https://github.com/minad/vertico)
  - [marginalia](https://github.com/minad/marginalia/)
  - [corfu](https://github.com/minad/corfu)
@@ -62,6 +73,12 @@ For those who'd like a little more help in making Emacs comfortable and discover
  - [orderless](https://github.com/oantolin/orderless)
 
 Along with a few ancillary packages that enhance the above.
+
+#### `mixins/dev.el`
+
+Packages this mixin uses:
+
+ - [magit](https://magit.vc)
 
 ## Using
 
