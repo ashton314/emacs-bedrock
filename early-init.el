@@ -42,9 +42,14 @@
 (setq inhibit-startup-echo-area-message (user-login-name))
 
 ;; Default frame configuration: full screen, good-looking title bar on macOS
+(setq frame-resize-pixelwise t)
+(tool-bar-mode -1)                      ; No gross icons
 (setq default-frame-alist '((fullscreen . maximized)
                             (vertical-scroll-bars . nil)
                             (horizontal-scroll-bars . nil)
                             (ns-appearance . dark)
                             (ns-transparent-titlebar . t)
                             (alpha-background . 50)))
+
+(set-face-background 'default "#000000")
+(set-face-foreground 'default "#cccccc")

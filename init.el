@@ -22,7 +22,8 @@
 ;; Show the help buffer after startup
 (add-hook 'after-init-hook 'help-quick)
 
-;; which-key: shows a popup of available keybindings
+;; which-key: shows a popup of available keybindings when typing a long key
+;; sequence (e.g. C-x ...)
 (use-package which-key
   :ensure t
   :config
@@ -52,15 +53,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Mode line information
-(setq line-number-mode t)
-(setq column-number-mode t)
+(setq line-number-mode t)                                        ; Show current line in modeline
+(setq column-number-mode t)                                      ; Show column as well
 
 (setq x-underline-at-descent-line nil)                           ; Prettier underlines
-(setq frame-resize-pixelwise t)
-(setq switch-to-buffer-obey-display-actions t)
+(setq switch-to-buffer-obey-display-actions t)                   ; Make switching buffers more consistent
 
-(setq-default show-trailing-whitespace nil)
-(setq-default indicate-buffer-boundaries 'left)
+(setq-default show-trailing-whitespace nil)                      ; By default, don't underline trailing spaces
+(setq-default indicate-buffer-boundaries 'left)                  ; Show icons showing the size of the buffer in the margin
 
 ;; Enable horizontal scrolling
 (setq mouse-wheel-tilt-scroll t)
@@ -72,13 +72,12 @@
 ;; (setq-default tab-width 4)
 
 ;; Misc. UI tweaks
-(blink-cursor-mode -1)
-(tool-bar-mode -1)
-(pixel-scroll-precision-mode)
-(global-hl-line-mode)
+(blink-cursor-mode -1)                                           ; Steady cursor
+(pixel-scroll-precision-mode)                                    ; Smooth scrolling
+(global-hl-line-mode)                                            ; Highlight the current line
 
 ;; Display line numbers in programming mode
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)            ; If programming, show line numbers
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -106,7 +105,6 @@
 (load-theme 'modus-vivendi)
 
 ;; If you like light-mode themes instead, use this:
-
 ;(load-theme 'modus-operandi)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -128,3 +126,16 @@
 ;;;   Built-in customization framework
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(which-key)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
