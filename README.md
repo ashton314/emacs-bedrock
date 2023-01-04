@@ -113,7 +113,7 @@ Yes, as of writing, Emacs 29.1 hasn't been released yet. The reason why is becau
 
 ## Development
 
-This is version `0.0.1`.
+This is version `0.0.2`.
 
 Once I am happy with the state of things, I'll change it to version `1.*.*`—at that point, no new `use-package` declarations will be added to `init.el`.
 
@@ -122,6 +122,20 @@ This is a hobby project. Please be patient.
 ### Roadmap
 
 See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHut.
+
+## Changelog
+
+ - 0.0.2
+
+   2023-01-03
+
+   Reorganize to slim down `early-init.el` and add the first mixin files.
+
+ - 0.0.1
+
+   2023-01-03
+ 
+   Initial "release".
 
 ## Authors
 
