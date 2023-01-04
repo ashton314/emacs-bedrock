@@ -1,14 +1,26 @@
-;;; Basic packages to improve life
+;;; Emacs Bedrock
+;;;
+;;; Minimal init.el
 
-;;; Navigation
+;;; Contents:
+;;;
+;;;  - Discovery aids
+;;;  - Minibuffer/completion settings
+;;;  - Interface enhancements/defaults
+;;;  - Tab-bar configuration
+;;;  - Theme
+;;;  - Optional mixins
+;;;  - Built-in customization framework
 
-;; Avy: move around buffers with ease
-(use-package avy
-  :ensure t
-  :bind (("C-c j" . avy-goto-line)
-         ("s-j"   . avy-goto-char-timer)))
 
-;;; Discovery
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Discovery aids
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Show the help buffer after startup
+(add-hook 'after-init-hook 'help-quick)
 
 ;; which-key: shows a popup of available keybindings
 (use-package which-key
@@ -16,82 +28,103 @@
   :config
   (which-key-mode))
 
-;;; Utilities
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Minibuffer/completion settings
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Magit: best Git client to ever exist
-(use-package magit
-  :ensure t)
+;; For help, see: https://www.masteringemacs.org/article/understanding-minibuffer-completion
 
-;;; Minibuffer and completion
+(setq enable-recursive-minibuffers t)                             ; Use the minibuffer whilst in the minibuffer
+(setq completion-cycle-threshold 1)                               ; TAB cycles candidates
+(setq completions-detailed t)                                     ; Show annotations
+(setq tab-always-indent 'complete)                                ; When I hit TAB, try to complete, otherwise, indent
 
-;; Vertico: better vertical completion for minibuffer commands
-(use-package vertico
-  :ensure t
-  :init
-  (fido-mode -1)
-  (vertico-mode))
+(fido-vertical-mode)                                              ; Show completion candidates in a vertical, interactive list
+(setq completion-styles '(basic initials substring))              ; Different styles to match input to candidates
+(define-key minibuffer-mode-map (kbd "TAB") 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
-;; Marginalia: annotations for minibuffer
-(use-package marginalia
-  :ensure t
-  :config
-  (marginalia-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Interface enhancements/defaults
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Popup completion-at-point
-(use-package corfu
-  :ensure t
-  :config
-  (global-corfu-mode))
+;; Mode line information
+(setq line-number-mode t)
+(setq column-number-mode t)
 
-;; Part of corfu
-(use-package corfu-popupinfo
-  :after corfu
-  :hook (corfu-mode . corfu-popupinfo-mode)
-  :custom
-  (corfu-popupinfo-delay '(0.25 . 0.1))
-  (corfu-popupinfo-hide nil)
-  :config
-  (corfu-popupinfo-mode))
+(setq x-underline-at-descent-line nil)                           ; Prettier underlines
+(setq frame-resize-pixelwise t)
+(setq switch-to-buffer-obey-display-actions t)
 
-;; Make corfu popup come up in terminal overlay
-(use-package corfu-terminal
-  :if (not (display-graphic-p))
-  :ensure t
-  :config
-  (corfu-terminal-mode))
+(setq-default show-trailing-whitespace nil)
+(setq-default indicate-buffer-boundaries 'left)
 
-;; Pretty icons for corfu
-(use-package kind-icon
-  :if (display-graphic-p)
-  :ensure t
-  :after corfu
-  :config
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+;; Enable horizontal scrolling
+(setq mouse-wheel-tilt-scroll t)
+(setq mouse-wheel-flip-direction t)
 
-;; Consult: Misc. enhanced commands
-(use-package consult
-  :ensure t
-  :bind (("C-x b" . consult-buffer) ;; orig. switch-to-buffer
-         ("M-y" . consult-yank-pop) ;; orig. yank-pop
-         ("C-s" . consult-line)     ;; orig. isearch
-         ))
+;; We won't set these, but they're good to know about
+;;
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 4)
 
-;; Orderless: powerful completion style
-(use-package orderless
-  :ensure t
-  :config
-  (setq completion-styles '(orderless)))
+;; Misc. UI tweaks
+(blink-cursor-mode -1)
+(tool-bar-mode -1)
+(pixel-scroll-precision-mode)
+(global-hl-line-mode)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(corfu-terminal consult corfu orderless marginalia vertico)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Display line numbers in programming mode
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Tab-bar configuration
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Show the tab-bar as soon as tab-bar functions are invoked
+(setq tab-bar-show 0)
+
+;; Add the time to the tab-bar, if visible
+(add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
+(add-to-list 'tab-bar-format 'tab-bar-format-global 'append)
+(setq display-time-format "%a %F %T")
+(setq display-time-interval 1)
+(display-time-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Theme
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; We just use the built-in high contrast theme modus-vivendi
+(load-theme 'modus-vivendi)
+
+;; If you like light-mode themes instead, use this:
+
+;(load-theme 'modus-operandi)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Optional mixins
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Uncomment these lines or copy from the mixin/ files as you see fit
+
+;; UI/UX enhancements mostly focused on minibuffer and autocompletion interfaces
+;(load-file "mixins/ui.el")
+
+;; Packages for software development
+;(load-file "mixins/dev.el")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Built-in customization framework
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
