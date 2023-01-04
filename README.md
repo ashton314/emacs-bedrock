@@ -82,13 +82,13 @@ Packages this mixin uses:
 
 ## Using
 
-Clone this repository wherever. Then you should copy `early-init.el` and (optionally) `init.el` into your `~/.emacs.d/` repository:
+Clone this repository wherever. Then you should copy `early-init.el` and `init.el` into your `~/.emacs.d/` repository:
 
 ```bash
 git clone https://git.sr.ht/~ashton314/emacs-bedrock
 mkdir -p ~/.emacs.d/
 cp emacs-bedrock/early-init.el ~/.emacs.d/
-cp emacs-bedrock/init.el ~/.emacs.d/                     # optional!
+cp emacs-bedrock/init.el ~/.emacs.d/
 ```
 
 Fire up Emacs and you're good to go!
