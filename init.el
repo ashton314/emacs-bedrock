@@ -12,6 +12,7 @@
 
 ;;; Contents:
 ;;;
+;;;  - Basic settings
 ;;;  - Discovery aids
 ;;;  - Minibuffer/completion settings
 ;;;  - Interface enhancements/defaults
@@ -20,6 +21,25 @@
 ;;;  - Optional mixins
 ;;;  - Built-in customization framework
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Basic settings
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; If you want to turn off the welcome screen, uncomment this
+;(setq inhibit-splash-screen t)
+
+(setq initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
+(setq display-time-default-load-average nil) ; this information is useless for most
+
+;; Automatically reread from disk if the underlying file changes
+(setq auto-revert-interval 3)
+(setq auto-revert-check-vc-info t)
+(global-auto-revert-mode)
+
+;; Save history of minibuffer
+(savehist-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
