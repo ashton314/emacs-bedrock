@@ -65,13 +65,19 @@
 
 ;; For help, see: https://www.masteringemacs.org/article/understanding-minibuffer-completion
 
-(setq enable-recursive-minibuffers t)                             ; Use the minibuffer whilst in the minibuffer
-(setq completion-cycle-threshold 1)                               ; TAB cycles candidates
-(setq completions-detailed t)                                     ; Show annotations
-(setq tab-always-indent 'complete)                                ; When I hit TAB, try to complete, otherwise, indent
+(setq enable-recursive-minibuffers t)                ; Use the minibuffer whilst in the minibuffer
+(setq completion-cycle-threshold 1)                  ; TAB cycles candidates
+(setq completions-detailed t)                        ; Show annotations
+(setq tab-always-indent 'complete)                   ; When I hit TAB, try to complete, otherwise, indent
+(setq completion-styles '(basic initials substring)) ; Different styles to match input to candidates
 
-(fido-vertical-mode)                                              ; Show completion candidates in a vertical, interactive list
-(setq completion-styles '(basic initials substring))              ; Different styles to match input to candidates
+(setq completion-auto-help 'always)                  ; Open completion always; `lazy' another option
+(setq completion-auto-select 'second-tab)            ; See `C-h v completion-auto-select' for more possible values
+(setq completions-max-height 10)                     ; This is arbitary
+
+;; Show minibuffer candiates in a vertical list
+(fido-vertical-mode)
+(setq icomplete-delay-completions-threshold 4000)
 (define-key minibuffer-mode-map (kbd "TAB") 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -81,14 +87,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Mode line information
-(setq line-number-mode t)                                        ; Show current line in modeline
-(setq column-number-mode t)                                      ; Show column as well
+(setq line-number-mode t)                        ; Show current line in modeline
+(setq column-number-mode t)                      ; Show column as well
 
-(setq x-underline-at-descent-line nil)                           ; Prettier underlines
-(setq switch-to-buffer-obey-display-actions t)                   ; Make switching buffers more consistent
+(setq x-underline-at-descent-line nil)           ; Prettier underlines
+(setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
 
-(setq-default show-trailing-whitespace nil)                      ; By default, don't underline trailing spaces
-(setq-default indicate-buffer-boundaries 'left)                  ; Show icons showing the size of the buffer in the margin
+(setq-default show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
+(setq-default indicate-buffer-boundaries 'left)  ; Show icons showing the size of the buffer in the margin
 
 ;; Enable horizontal scrolling
 (setq mouse-wheel-tilt-scroll t)
@@ -100,12 +106,18 @@
 ;; (setq-default tab-width 4)
 
 ;; Misc. UI tweaks
-(blink-cursor-mode -1)                                           ; Steady cursor
-(pixel-scroll-precision-mode)                                    ; Smooth scrolling
-(global-hl-line-mode)                                            ; Highlight the current line
+(blink-cursor-mode -1)                                ; Steady cursor
+(pixel-scroll-precision-mode)                         ; Smooth scrolling
+
+;; Use common keystrokes by default
+(cua-mode)
 
 ;; Display line numbers in programming mode
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)            ; If programming, show line numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode) ; If programming, show line numbers
+
+;; Modes to highlight the current line with
+(let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
+  (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
