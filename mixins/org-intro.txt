@@ -1,0 +1,91 @@
+Many people use Emacs just so they can use org-mode. If you're one of them,
+welcome!
+
+This is a short introduction to get an overview of what org-mode does.
+
+Org-mode is hard to understand because there are broadly three different things
+that org-mode does. They're related but distinct enough to make things
+confusing. We'll focus on three different use cases for org-mode:
+
+ - org-mode as markup
+ - org-mode as a task tracker
+ - org-mode as a computational notebook
+
+Org-mode as markup
+==================
+
+Org-mode is first and foremost a lightweight markup language, just like
+Markdown. (In fact, they were developed at around the same time.) There are a
+few differences in syntax, but if you're already familiar with the ideas behind
+Markdown you should be just fine.
+
+If you've never worked with something like Markdown before, you can think of it
+as a system of special characters that indicate some formatting, e.g. you mark
+text as being *bold*, _underlined_, or /italicized/ by surrounding it with
+asterisks, underscores, and slashes respectively.
+
+Once you've authored a file with org-mode, you can use Emacs to export the
+org-mode into another format, like HTML, Markdown, ODT, or PDF with LaTeX. Run
+`org-export` to bring up the export menu.
+
+Org-mode as a task tracker
+==========================
+
+Like Markdown, org-mode has headings. Instead of starting headings with one or
+more "#" signs, org-mode uses asterisks. An org mode heading looks like this:
+
+    * Heading
+
+    Lorem ipsum…
+
+    ** Subheading
+
+    Dolor sit amet…
+
+    ** Another subheading
+
+    Magister Ludi…
+
+    * Another top-level heading
+
+    Quam elivit…
+
+*Any* heading can become a task. This might feel overwhelming, and rightly so.
+For now, just start with a list of top-level headings with the TODO keyword.
+
+    * TODO Do important thing
+    * TODO Take Yessica to get her haircut
+    * TODO Finish configuring Emacs
+
+You can associate deadlines, notes, tags, attachments, different TODO states,
+etc. to these headlines. Read the org-mode manual for more information.
+
+While there are cases when you might want to put a TODO item in an arbitrary
+file, most of the time these TODOs will go into an agenda file.
+
+The `org-directory` and `org-agenda-files` variables control where org-mode
+looks to find TODO items to generate what's called an agenda: an agenda is a
+view of all your headlines with TODO (or other states like WAITING, as
+configured) status set. The agenda usually organizes these by date and makes it
+easy for you to sort, filter, and modify these items.
+
+For now, just start with one org-mode file at `~/Documents/org/inbox.org`. Put
+some headings with TODO keywords in that file and save it. Be sure to add a
+deadline for today. (You can run `org-deadline` to do this automatically for
+you.) Now invoke `org-agenda`. This should pull up a buffer with those headlines
+you just added in it.
+
+There are too many ways you can configure this for me to describe here. Just
+start small: have one or two files in the `org-agenda-files` list to act as
+where you put your TODO items. Use the agenda to view and modify those TODOs.
+
+Org-mode as a computational notebook
+====================================
+
+You can use org-mode as a kind of computational notebook. Org-mode lets you have
+blocks of source code in line, and then you can instruct org-mode to evaluate
+those blocks of code for you.
+
+The setup varies from language to language, and I'm not going to try to explain
+that here. If you're writing code, you should be familiar with reading
+documentation, so I'll let you do that yourself. :)

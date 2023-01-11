@@ -10,6 +10,12 @@
 ;;;
 ;;; We will configure Org-mode in phases. Work with each phase as you are
 ;;; comfortable.
+;;;
+;;; YOU NEED TO CONFIGURE SOME VARIABLES! The most important variable is the
+;;; `org-directory', which tells org-mode where to look to find your agenda
+;;; files.
+
+;;; See "org-intro.txt" for a high-level overview.
 
 ;;; Contents:
 ;;;
@@ -31,12 +37,6 @@
 ;;; you're looking for.
 
 ;;; Phase 1 variables
-
-;; Advanced: Custom link types
-;; This example is for linking a person's 7-character ID to their page on the
-;; free genealogy website Family Search.
-(setq org-link-abbrev-alist
-      '(("family_search" . "https://www.familysearch.org/tree/person/details/%s")))
 
 ;;; Phase 2 variables
 
@@ -74,6 +74,14 @@
 ;; Org-roam variables
 (setq org-roam-directory "~/Documents/org-roam/")
 (setq org-roam-index-file "~/Documents/org-roam/index.org")
+
+;;; Optional variables
+
+;; Advanced: Custom link types
+;; This example is for linking a person's 7-character ID to their page on the
+;; free genealogy website Family Search.
+(setq org-link-abbrev-alist
+      '(("family_search" . "https://www.familysearch.org/tree/person/details/%s")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
