@@ -60,6 +60,10 @@ Mixins:
 
  - UI Enhancements
  - Development tools
+ - Org-mode (in development)
+ - Email (TODO: mu4e, EBDB)
+ - Researcher (TODO: citar, denote, org-roam, LaTeX)
+ - Vim refugee (TODO: evil-mode)
 
 #### `mixins/ui.el`
 
@@ -113,7 +117,7 @@ Yes, as of writing, Emacs 29.1 hasn't been released yet. The reason why is becau
 
 ## Development
 
-This is version `0.0.2`.
+This is version `0.1.0`.
 
 Once I am happy with the state of things, I'll change it to version `1.*.*`—at that point, no new `use-package` declarations will be added to `init.el`.
 
@@ -124,6 +128,12 @@ This is a hobby project. Please be patient.
 See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHut.
 
 ## Changelog
+
+ - 0.1.0
+ 
+   2023-01-17
+   
+   Begin work on `mixin/org.el`, turn on windmove-mode.
 
  - 0.0.2
 

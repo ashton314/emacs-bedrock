@@ -41,6 +41,9 @@
 ;; Save history of minibuffer
 (savehist-mode)
 
+;; Move through windows with Ctrl-<arrow keys>
+(windmove-default-keybindings 'control) ; You can use other modifiers here
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Discovery aids
