@@ -79,6 +79,9 @@
          ("C-s" . consult-line)     ;; orig. isearch
          ))
 
+(use-package eshell
+  :bind (("C-r" . consult-history)))
+
 ;; Orderless: powerful completion style
 (use-package orderless
   :ensure t

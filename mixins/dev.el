@@ -4,6 +4,9 @@
 
 ;;; Usage: Append or require this file from init.el for some software
 ;;; development-focused packages.
+;;;
+;;; It is **STRONGLY** recommended that you use the ui.el mixin if you want to
+;;; use eglot. Lots of completion things will work better.
 
 ;;; Contents:
 ;;;
