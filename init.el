@@ -87,13 +87,18 @@ If the new path's directories does not exist, create them."
 (setq completion-styles '(basic initials substring)) ; Different styles to match input to candidates
 
 (setq completion-auto-help 'always)                  ; Open completion always; `lazy' another option
-(setq completion-auto-select 'second-tab)            ; See `C-h v completion-auto-select' for more possible values
-(setq completions-max-height 10)                     ; This is arbitary
+(setq completions-max-height 20)                     ; This is arbitary
+(setq completions-detailed t)
+(setq completions-format 'one-column)
+(setq completions-group t)
+(setq completion-auto-select 'second-tab)            ; Much more eager
+;(setq completion-auto-select t)                     ; See `C-h v completion-auto-select' for more possible values
 
-;; Show minibuffer candiates in a vertical list
-(fido-vertical-mode)
-(setq icomplete-delay-completions-threshold 4000)
-(define-key minibuffer-mode-map (kbd "TAB") 'minibuffer-complete) ; TAB acts more like how it does in the shell
+(keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
+
+;; For a fancier built-in completion option, try ido-mode or fido-mode. See also mixins/ui.el
+;(fido-vertical-mode)
+;(setq icomplete-delay-completions-threshold 4000)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
