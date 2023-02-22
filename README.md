@@ -50,7 +50,7 @@ This is where the meat of all configuration goes. This file:
 
  - Add minor UI niceties (e.g. clock in the tab-bar, full-screen by default, etc.)
  - Set the default theme (`modus-vivendi`)
- - Turn on discovery aids (e.g. `help-quick`, `fido-vertical-mode`, [which-key](https://github.com/justbur/emacs-which-key), etc.)
+ - Turn on discovery aids (e.g. `help-quick`, [which-key](https://github.com/justbur/emacs-which-key), etc.)
 
 ### Mixins
 

@@ -22,7 +22,8 @@
 
 ;; Magit: best Git client to ever exist
 (use-package magit
-  :ensure t)
+  :ensure t
+  :bind (("s-g" . magit-status)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
