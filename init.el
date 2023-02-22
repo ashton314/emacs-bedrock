@@ -44,6 +44,18 @@
 ;; Move through windows with Ctrl-<arrow keys>
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
+;; Don't litter filesystem with *~ backup files; put them all inside
+;; ~/.emacs.d/backup or wherever
+(defun bedrock--backup-file-name (fpath)
+  "Return a new file path of a given file path.
+If the new path's directories does not exist, create them."
+  (let* ((backupRootDir "~/.emacs.d/emacs-backup/")
+         (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, for example, “C:”
+         (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") )))
+    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
+    backupFilePath))
+(setq make-backup-file-name-function 'bedrock--backup-file-name)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Discovery aids
