@@ -96,7 +96,8 @@ If the new path's directories does not exist, create them."
 
 (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
-;; For a fancier built-in completion option, try ido-mode or fido-mode. See also mixins/ui.el
+;; For a fancier built-in completion option, try ido-mode or fido-mode. See also
+;; the file mixins/ui.el
 ;(fido-vertical-mode)
 ;(setq icomplete-delay-completions-threshold 4000)
 
@@ -114,7 +115,7 @@ If the new path's directories does not exist, create them."
 (setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
 
 (setq-default show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
-(setq-default indicate-buffer-boundaries 'left)  ; Show icons showing the size of the buffer in the margin
+(setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
 
 ;; Enable horizontal scrolling
 (setq mouse-wheel-tilt-scroll t)
@@ -133,7 +134,7 @@ If the new path's directories does not exist, create them."
 (cua-mode)
 
 ;; Display line numbers in programming mode
-(add-hook 'prog-mode-hook 'display-line-numbers-mode) ; If programming, show line numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Modes to highlight the current line with
 (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
@@ -180,6 +181,22 @@ If the new path's directories does not exist, create them."
 
 ;; Packages for software development
 ;(load-file "mixins/dev.el")
+
+;; Org-mode configuration
+;; WARNING: need to customize things inside the mixin file before use! See
+;; the file mixins/org-intro.txt for help.
+;(load-file "mixins/org.el")
+
+;; Email configuration in Emacs
+;; WARNING: needs the `mu' program installed; see the mixin file for more
+;; details.
+;(load-file "mixins/email.el")
+
+;; Tools for academic researchers
+;(load-file "mixins/researcher.el")
+
+;; Vim-bindings in Emacs (evil-mode configuration)
+;(load-file "mixins/vim-like.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
