@@ -44,6 +44,9 @@
 ;; Move through windows with Ctrl-<arrow keys>
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
+;; Make right-click do something sensible
+(context-menu-mode)
+
 ;; Don't litter filesystem with *~ backup files; put them all inside
 ;; ~/.emacs.d/backup or wherever
 (defun bedrock--backup-file-name (fpath)
@@ -87,7 +90,7 @@ If the new path's directories does not exist, create them."
 (setq completion-styles '(basic initials substring)) ; Different styles to match input to candidates
 
 (setq completion-auto-help 'always)                  ; Open completion always; `lazy' another option
-(setq completions-max-height 20)                     ; This is arbitary
+(setq completions-max-height 20)                     ; This is arbitrary
 (setq completions-detailed t)
 (setq completions-format 'one-column)
 (setq completions-group t)
