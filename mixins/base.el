@@ -42,6 +42,7 @@
 
 (use-package embark
   :ensure t
+  :after avy
   :bind (("C-c a" . embark-act))
   :init
   ;; Add the option to run embark when using avy
