@@ -45,7 +45,8 @@
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
 ;; Make right-click do something sensible
-(context-menu-mode)
+(when (display-graphic-p)
+  (context-menu-mode))
 
 ;; Don't litter filesystem with *~ backup files; put them all inside
 ;; ~/.emacs.d/backup or wherever
