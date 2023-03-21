@@ -1,6 +1,6 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Mixin: UI enhancements
+;;; Mixin: Base UI enhancements
 
 ;;; Usage: Append or require this file from init.el to enable various UI/UX
 ;;; enhancements.
@@ -8,6 +8,7 @@
 ;;; Contents:
 ;;;
 ;;;  - Motion aids
+;;;  - Power-ups: Embark and Consult
 ;;;  - Minibuffer and completion
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -20,6 +21,42 @@
   :ensure t
   :bind (("C-c j" . avy-goto-line)
          ("s-j"   . avy-goto-char-timer)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Power-ups: Embark and Consult
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Consult: Misc. enhanced commands
+(use-package consult
+  :ensure t
+  ;; Other good things to bind: consult-ripgrep, consult-line-multi,
+  ;; consult-history, consult-outline, consult-error
+  :bind (("C-x b" . consult-buffer) ;; orig. switch-to-buffer
+         ("M-y" . consult-yank-pop) ;; orig. yank-pop
+         ("C-s" . consult-line))    ;; orig. isearch
+  :config
+  ;; Narrowing lets you restrict results to certain groups of candidates
+  (setq consult-narrow-key "<"))
+
+(use-package embark
+  :ensure t
+  :bind (("C-c a" . embark-act))
+  :init
+  ;; Add the option to run embark when using avy
+  (defun bedrock/avy-action-embark (pt)
+    (unwind-protect
+        (save-excursion
+          (goto-char pt)
+          (embark-act))
+      (select-window
+       (cdr (ring-ref avy-ring 0))))
+    t)
+
+  ;; After invoking avy-goto-char-timer, hit "." to run embark at the next
+  ;; candidate you select
+  (setf (alist-get ?. avy-dispatch-alist) 'bedrock/avy-action-embark))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -70,18 +107,6 @@
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-
-;; Consult: Misc. enhanced commands
-(use-package consult
-  :ensure t
-  ;; Other good things to bind: consult-ripgrep, consult-line-multi,
-  ;; consult-history, consult-outline, consult-error
-  :bind (("C-x b" . consult-buffer) ;; orig. switch-to-buffer
-         ("M-y" . consult-yank-pop) ;; orig. yank-pop
-         ("C-s" . consult-line))    ;; orig. isearch
-  :config
-  ;; Narrowing lets you restrict results to certain groups of candidates
-  (setq consult-narrow-key "<"))
 
 (use-package eshell
   :bind (("C-r" . consult-history)))
