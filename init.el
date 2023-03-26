@@ -101,7 +101,7 @@ If the new path's directories does not exist, create them."
 (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
 ;; For a fancier built-in completion option, try ido-mode or fido-mode. See also
-;; the file mixins/ui.el
+;; the file mixins/base.el
 ;(fido-vertical-mode)
 ;(setq icomplete-delay-completions-threshold 4000)
 
@@ -181,7 +181,7 @@ If the new path's directories does not exist, create them."
 ;; Uncomment these lines or copy from the mixin/ files as you see fit
 
 ;; UI/UX enhancements mostly focused on minibuffer and autocompletion interfaces
-;(load-file "mixins/ui.el")
+;(load-file "mixins/base.el")
 
 ;; Packages for software development
 ;(load-file "mixins/dev.el")
