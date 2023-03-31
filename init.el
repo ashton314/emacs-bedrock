@@ -48,7 +48,7 @@
 (when (display-graphic-p)
   (context-menu-mode))
 
-;; Don't litter filesystem with *~ backup files; put them all inside
+;; Don't litter file system with *~ backup files; put them all inside
 ;; ~/.emacs.d/backup or wherever
 (defun bedrock--backup-file-name (fpath)
   "Return a new file path of a given file path.
@@ -139,6 +139,9 @@ If the new path's directories does not exist, create them."
 
 ;; Display line numbers in programming mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;; Nice line wrapping when working with text
+(add-hook 'text-mode-hook 'visual-line-mode)
 
 ;; Modes to highlight the current line with
 (let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
