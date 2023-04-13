@@ -27,11 +27,14 @@
 (setq frame-resize-pixelwise t)
 (tool-bar-mode -1)                      ; All these tools are in the menu-bar anyway
 (setq default-frame-alist '((fullscreen . maximized)
-                            (vertical-scroll-bars . nil)
-                            (horizontal-scroll-bars . nil)
-                            (ns-appearance . dark)
-                            (ns-transparent-titlebar . t)
-                            (alpha-background . 50)))
 
-(set-face-background 'default "#000000")
-(set-face-foreground 'default "#cccccc")
+                            ;; You can turn off scroll bars by uncommenting these lines:
+                            ;; (vertical-scroll-bars . nil)
+                            ;; (horizontal-scroll-bars . nil)
+
+                            ;; Setting the face in here prevents flashes of
+                            ;; color as the theme gets activated
+                            (background-color . "#000000")
+                            (ns-appearance . dark)
+                            (ns-transparent-titlebar . t)))
+
