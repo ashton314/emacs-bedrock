@@ -28,9 +28,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Package initialization
-(with-eval-after-load 'package
-  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+;;
+;; We'll stick to only GNU ELPA (Emacs Lisp Package Archive) for the base
+;; install, but there are some other ELPAs you could look at if you want more
+;; packages. MELPA in particular is very popular. See instructions at:
+;;
+;;    https://melpa.org/#/getting-started
+;;
+;; (with-eval-after-load 'package
+;;   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+;;   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
 ;; If you want to turn off the welcome screen, uncomment this
 ;(setq inhibit-splash-screen t)
