@@ -113,7 +113,6 @@
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package eshell
-  :elpaca nil
   :bind (("C-r" . consult-history)))
 
 ;; Orderless: powerful completion style
