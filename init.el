@@ -56,6 +56,9 @@
 ;; Move through windows with Ctrl-<arrow keys>
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
+;; Fix archaic defaults
+(setq sentence-end-double-space nil)
+
 ;; Make right-click do something sensible
 (when (display-graphic-p)
   (context-menu-mode))
