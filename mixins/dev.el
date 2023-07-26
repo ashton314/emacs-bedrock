@@ -10,9 +10,20 @@
 
 ;;; Contents:
 ;;;
+;;;  - Built-in config for developers
 ;;;  - Version Control
 ;;;  - Common file types
 ;;;  - Eglot, the built-in LSP client for Emacs
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Built-in config for developers
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package emacs
+  :hook
+  ((prog-mode . electric-pair-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -60,6 +71,7 @@
   (eglot-send-changes-idle-time 0.1)
 
   :config
+  (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
   ;; Sometimes you need to tell Eglot where to find the language server
   ; (add-to-list 'eglot-server-programs
   ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))

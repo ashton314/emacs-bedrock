@@ -72,8 +72,13 @@
 (use-package vertico
   :ensure t
   :init
-  (fido-mode -1)
+  ;; You'll want to make sure that e.g. fido-mode isn't enabled
   (vertico-mode))
+
+(use-package vertico-directory
+  :after vertico
+  :bind (:map vertico-map
+              ("M-DEL" . vertico-directory-delete-word)))
 
 ;; Marginalia: annotations for minibuffer
 (use-package marginalia
@@ -84,18 +89,23 @@
 ;; Popup completion-at-point
 (use-package corfu
   :ensure t
-  :config
-  (global-corfu-mode))
+  :init
+  (global-corfu-mode)
+  :bind
+  (:map corfu-map
+        ("SPC" . corfu-insert-separator)
+        ("C-n" . corfu-next)
+        ("C-p" . corfu-previous)))
 
 ;; Part of corfu
-;; (use-package corfu-popupinfo
-;;   :after corfu
-;;   :hook (corfu-mode . corfu-popupinfo-mode)
-;;   :custom
-;;   (corfu-popupinfo-delay '(0.25 . 0.1))
-;;   (corfu-popupinfo-hide nil)
-;;   :config
-;;   (corfu-popupinfo-mode))
+(use-package corfu-popupinfo
+  :after corfu
+  :hook (corfu-mode . corfu-popupinfo-mode)
+  :custom
+  (corfu-popupinfo-delay '(0.25 . 0.1))
+  (corfu-popupinfo-hide nil)
+  :config
+  (corfu-popupinfo-mode))
 
 ;; Make corfu popup come up in terminal overlay
 (use-package corfu-terminal
