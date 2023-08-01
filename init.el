@@ -186,22 +186,6 @@ If the new path's directories does not exist, create them."
 
 (use-package emacs
   :config
-  (require-theme 'modus-themes)
-
-  (setq modus-themes-italic-constructs nil
-        modus-themes-bold-constructs nil
-        modus-themes-disable-other-themes t
-        modus-themes-prompts '(italic bold)
-        modus-themes-org-blocks 'gray-background
-        modus-themes-completion '((matches . (extrabold))
-                                  (selection . (semibold italic text-also)))
-        modus-themes-syntax '(green-strings)
-        modus-themes-region '(bg-only))
-
-  (setq modus-themes-common-palette-overrides
-        '((border-mode-line-active unspecified)
-          (border-mode-line-inactive unspecified)))
-
   (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
 
 
