@@ -32,10 +32,10 @@
 (use-package consult
   :ensure t
   ;; Other good things to bind: consult-ripgrep, consult-line-multi,
-  ;; consult-history, consult-outline, consult-error
-  :bind (("C-x b" . consult-buffer) ;; orig. switch-to-buffer
-         ("M-y" . consult-yank-pop) ;; orig. yank-pop
-         ("C-s" . consult-line))    ;; orig. isearch
+  ;; consult-history, consult-outline
+  :bind (("C-x b" . consult-buffer) ; orig. switch-to-buffer
+         ("M-y" . consult-yank-pop) ; orig. yank-pop
+         ("C-s" . consult-line))    ; orig. isearch
   :config
   ;; Narrowing lets you restrict results to certain groups of candidates
   (setq consult-narrow-key "<"))
@@ -43,7 +43,7 @@
 (use-package embark
   :ensure t
   :after avy
-  :bind (("C-c a" . embark-act))
+  :bind (("C-c a" . embark-act))        ; bind this to an easy key to hit
   :init
   ;; Add the option to run embark when using avy
   (defun bedrock/avy-action-embark (pt)

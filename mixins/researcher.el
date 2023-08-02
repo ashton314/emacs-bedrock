@@ -8,6 +8,8 @@
 ;;;
 ;;; Highly recommended to enable this mixin with the UI enhancements in
 ;;; `base.el', as citar works best with the Vertico completing-read interface.
+;;; Also recommended is the `writer.el' mixin, which adds some nice features for
+;;; spell-checking etc.
 
 ;;; Contents:
 ;;;
