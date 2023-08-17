@@ -33,8 +33,8 @@
 ;;; These variables need to be set for Org-mode's full power to be unlocked!
 ;;;
 ;;; You can read the documentation for any variable with `C-h v'. If you have
-;;; Consult configured (see the `ui.el' file) then it should help you find what
-;;; you're looking for.
+;;; Consult configured (see the `base.el' file) then it should help you find
+;;; what you're looking for.
 
 ;;; Phase 1 variables
 

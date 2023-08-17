@@ -11,15 +11,9 @@ An *extremely* minimal Emacs starter kit uses *no* external packages by default,
  - Mirrors:
    - [GitHub](https://github.com/ashton314/emacs-bedrock)
 
+**NOTICE:** Requires Emacs 29.1 or better.
+
 ## Description
-
-**ACHTUNG!**
-
-This makes use of some Emacs 29.1 features! Fortunately these features should all be stable, but you will have serious troubles if you try using this unmodified on anything earlier. (Features: `help-quick`, built-in `use-package`.)
-
-For testing, you can run `emacs --init-directory path/to/emacs-bedrock/` and all the customizations and package installations will be isolated to the project directory. Emacs should only add files that are already in the `.gitignore`.
-
---------------------------------------------------------------------------------
 
 This is a minimal Emacs starter kit. Like, *really* minimal. Here's the short of the philosophy:
 
@@ -52,20 +46,26 @@ This is where the meat of all configuration goes. This file:
  - Set the default theme (`modus-vivendi`)
  - Turn on discovery aids (e.g. `help-quick`, [which-key](https://github.com/justbur/emacs-which-key), etc.)
 
-### Mixins
+### Trying this out without committing too hard
+
+Emacs 29.1 added the handy `--init-directory` flag. This means that you can run `emacs --init-directory path/to/emacs-bedrock/` and all the customizations and package installations will be isolated to the project directory. Emacs should only add files that are already in the `.gitignore`.
+
+Once you're happy, you should just copy `init.el` and `early-init.el` to `~/.emacs.d/`.
+
+## Mixins
 
 For those who'd like a little more help in tailoring Emacs for specific purposes, the `mixins/` folder contains a few files that can be included via `(load-file "mixin/mixin-name.el")` from the `init.el` file, or copied wholesale or in part into `init.el` directly.
 
 Mixins:
 
- - UI Enhancements
+ - Base UI Enhancements
  - Development tools
  - Org-mode (in development)
  - Vim refugee (in development)
  - Email (TODO: mu4e, EBDB)
  - Researcher (TODO: citar, denote, org-roam, LaTeX)
 
-#### `mixins/ui.el`
+#### `mixins/base.el`
 
 Packages this mixin uses:
 
