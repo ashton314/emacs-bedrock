@@ -198,26 +198,26 @@ If the new path's directories does not exist, create them."
 ;; Uncomment these lines or copy from the mixin/ files as you see fit
 
 ;; UI/UX enhancements mostly focused on minibuffer and autocompletion interfaces
-;(load-file "mixins/base.el")
+;(load-file (expand-file-name "mixins/base.el" user-emacs-directory))
 
 ;; Packages for software development
-;(load-file "mixins/dev.el")
+;(load-file (expand-file-name "mixins/dev.el" user-emacs-directory))
 
 ;; Org-mode configuration
 ;; WARNING: need to customize things inside the mixin file before use! See
 ;; the file mixins/org-intro.txt for help.
-;(load-file "mixins/org.el")
+;(load-file (expand-file-name "mixins/org.el" user-emacs-directory))
 
 ;; Email configuration in Emacs
 ;; WARNING: needs the `mu' program installed; see the mixin file for more
 ;; details.
-;(load-file "mixins/email.el")
+;(load-file (expand-file-name "mixins/email.el" user-emacs-directory))
 
 ;; Tools for academic researchers
-;(load-file "mixins/researcher.el")
+;(load-file (expand-file-name "mixins/researcher.el" user-emacs-directory))
 
 ;; Vim-bindings in Emacs (evil-mode configuration)
-;(load-file "mixins/vim-like.el")
+;(load-file (expand-file-name "mixins/vim-like.el" user-emacs-directory))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
