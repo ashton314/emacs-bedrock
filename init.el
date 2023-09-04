@@ -189,20 +189,23 @@ If the new path's directories does not exist, create them."
   :config
   (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Optional mixins
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Uncomment these lines or copy from the mixin/ files as you see fit
+;; Uncomment the (load-file …) lines or copy from the mixin/ files as desired
 
 ;; UI/UX enhancements mostly focused on minibuffer and autocompletion interfaces
+;; These ones are *strongly* recommended!
 ;(load-file (expand-file-name "mixins/base.el" user-emacs-directory))
 
 ;; Packages for software development
 ;(load-file (expand-file-name "mixins/dev.el" user-emacs-directory))
+
+;; Vim-bindings in Emacs (evil-mode configuration)
+;(load-file (expand-file-name "mixins/vim-like.el" user-emacs-directory))
 
 ;; Org-mode configuration
 ;; WARNING: need to customize things inside the mixin file before use! See
@@ -216,9 +219,6 @@ If the new path's directories does not exist, create them."
 
 ;; Tools for academic researchers
 ;(load-file (expand-file-name "mixins/researcher.el" user-emacs-directory))
-
-;; Vim-bindings in Emacs (evil-mode configuration)
-;(load-file (expand-file-name "mixins/vim-like.el" user-emacs-directory))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
