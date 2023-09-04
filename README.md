@@ -9,7 +9,7 @@ An *extremely* minimal Emacs starter kit uses *no* external packages by default,
  - [Project homepage](https://sr.ht/~ashton314/emacs-bedrock/)
  - [Issue Tracker](https://todo.sr.ht/~ashton314/emacs-bedrock)
  - Mirrors:
-   - [GitHub](https://github.com/ashton314/emacs-bedrock)
+   - [GitHub](https://github.com/ashton314/emacs-bedrock) (just a place holder)
 
 **NOTICE:** Requires Emacs 29.1 or better.
 
@@ -56,43 +56,83 @@ Once you're happy, you should just copy `init.el` and `early-init.el` to `~/.ema
 
 For those who'd like a little more help in tailoring Emacs for specific purposes, the `mixins/` folder contains a few files that can be included via `(load-file "mixin/mixin-name.el")` from the `init.el` file, or copied wholesale or in part into `init.el` directly.
 
+**NOTE:** If you copy the `mixin/` directory to `~/.emacs.d/` or wherever you're setting `user-emacs-directory`, then simply incrementing the appropriate lines in the `init.el` file should work.
+
 Mixins:
 
  - Base UI Enhancements
  - Development tools
- - Org-mode (in development)
- - Vim refugee (in development)
+ - Org-mode
+ - Vim refugee
  - Email (TODO: mu4e, EBDB)
- - Researcher (TODO: citar, denote, org-roam, LaTeX)
+ - Researcher (TODO: denote)
 
 #### `mixins/base.el`
 
-Packages this mixin uses:
+Packages this mixin adds:
 
- - [avy](https://github.com/abo-abo/avy)
- - [vertico](https://github.com/minad/vertico)
- - [marginalia](https://github.com/minad/marginalia/)
- - [corfu](https://github.com/minad/corfu)
- - [consult](https://github.com/minad/consult)
- - [orderless](https://github.com/oantolin/orderless)
+ - [Avy](https://github.com/abo-abo/avy)
+ - [Embark](https://github.com/oantolin/embark)
+ - [Vertico](https://github.com/minad/vertico)
+ - [Marginalia](https://github.com/minad/marginalia/)
+ - [Corfu](https://github.com/minad/corfu)
+ - [Consult](https://github.com/minad/consult)
+ - [Orderless](https://github.com/oantolin/orderless)
 
 Along with a few ancillary packages that enhance the above.
 
+These are some of the best UI enhancements that Emacs has to offer. Vertico and Consult make common operations like searching files, switching buffers, etc. a breeze. Corfu enhances the "completion at point" (aka "tab-to-complete") to show a little popup window like what you'd be used to in e.g. VS Code. 
+
+Avy is the fastest way to move around in a buffer, and it can do a *lot*.[^1] Embark is kind of like a right-click context menu, but entirely keyboard driven.
+
 #### `mixins/dev.el`
 
-Packages this mixin uses:
+Packages this mixin adds:
 
  - [magit](https://magit.vc)
+ - Markdown, YAML, and JSON modes
+
+Magit is the best Git interface in the known universe. Some people use Emacs just so they can use Magit. It's that good. Entry point is bound to `C-c g` by default.
+
+Built-in packages that this mixin configures:
+
+ - [Eglot](https://github.com/joaotavora/eglot) ([Language Server Protocol (LSP) client](https://microsoft.github.io/language-server-protocol/))
+ - Treesit ([Tree-Sitter](https://github.com/tree-sitter) support)
+
+Both of these packages are new in Emacs 29. Be sure to run `M-x treesit-install-language-grammar` to install the language grammar you'll need before editing a file the respective language for the first time.
+
+#### `mixins/vim-like.el`
+
+Packages this mixin adds:
+
+ - [Evil](https://github.com/emacs-evil/evil)
+
+If you like Vim keybindings, then this is the mixin for you. It configures `evil-mode` and enables it, so you get Vim-like keybindings all throughout Emacs. I understand that this is the best Vim emulation outside of Vim itself. I use `evil-mode` in all my work.
+
+Other packages that I use personally, but are not on GNU or non-GNU ELPA and so left out of the config include:
+
+ - [Evil-Collection](https://github.com/emacs-evil/evil-collection) Add Evil-friendly keybindings to lots of corners of Emacs
+ - [Evil-Leader](https://github.com/cofi/evil-leader) Setting a prefix (i.e. "leader") key
+ - [Origami](https://github.com/gregsexton/origami.el) Code folding
+
+#### `mixins/org.el`
+
+This mixin configures `org-mode`. There is a *lot* that Bedrock cannot configure out of the box—you will need to modify all variables to fit your file system and needs, as explained in comments in the file.
+
+#### `mixins/email.el`
+
+TODO
 
 ## Using
 
-Clone this repository wherever. Then you should copy `early-init.el` and `init.el` into your `~/.emacs.d/` repository:
+Clone this repository wherever. Then you should copy `early-init.el`, `init.el`, and (optionally, recommended) `mixins/` into your `~/.emacs.d/` repository:
 
 ```bash
 git clone https://git.sr.ht/~ashton314/emacs-bedrock
 mkdir -p ~/.emacs.d/
 cp emacs-bedrock/early-init.el ~/.emacs.d/
 cp emacs-bedrock/init.el ~/.emacs.d/
+cp -r emacs-bedrock/mixins ~/.emacs.d/
 ```
 
 Fire up Emacs and you're good to go!
@@ -113,21 +153,38 @@ When I started learning Emacs, my dad gave me his `.emacs` file. (That's what we
 
 Emacs 29.1 or later.
 
-Yes, as of writing, Emacs 29.1 hasn't been released yet. The reason why is because we are relying on `use-pacakge` to be built-in.
+Emacs 29.1 is, as of 2023-09-04, the latest stable release. The specific features from Emacs 29.1 that Bedrock relies on are:
+
+ - The `use-package` macro for configuration
+ - Enhancements to the built-in completion help (`completions-auto-select`, `completion-auto-help`, etc.)
+ - Built-in tree-sitter support
+ - Built-in LSP client (Eglot)
 
 ## Development
 
-This is version `0.2.0`.
+This is version `1.0.0`. No new `use-package` declarations will be added to `init.el`. No promises on the mixins. :)
 
-Once I am happy with the state of things, I'll change it to version `1.*.*`—at that point, no new `use-package` declarations will be added to `init.el`.
+This is a hobby project. Please be patient with development.
 
-This is a hobby project. Please be patient.
+I welcome any feedback you may have. You can [open issues](https://todo.sr.ht/~ashton314/emacs-bedrock) or [drop me a line](https://lambdaland.org/#contact) directly with any comments or suggestions.
 
 ### Roadmap
 
 See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHut.
 
 ## Changelog
+
+ - 1.0.0
+ 
+   2023-09-04
+   
+   First "stable" release! Line number width improved, fix default load paths, expand Eglot and Vertico config, fix Corfu load.
+
+ - 0.2.1
+
+   2023-06-20
+   
+   Minor bug fixes; add Embark package.
 
  - 0.2.0
  
@@ -156,3 +213,5 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
 ## Authors
 
  - Ashton Wiersdorf https://lambdaland.org
+
+[^1]: https://karthinks.com/software/avy-can-do-anything/
