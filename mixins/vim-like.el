@@ -17,10 +17,14 @@
 ;; Evil: vi emulation
 (use-package evil
   :ensure t
+
   :init
   (setq evil-respect-visual-line-mode t)
   (setq evil-undo-system 'undo-redo)
-  (setq evil-want-keybinding nil)       ; prep to load evil-collection
+
+  ;; Enable this if you want C-u to scroll up, more like pure Vim
+  ;(setq evil-want-C-u-scroll t)
+
   :config
   (evil-mode)
 
