@@ -53,13 +53,17 @@ Emacs 29.1 added the handy `--init-directory` flag. This means that you can run 
 
 Once you're happy, you should just copy `init.el` and `early-init.el` to `~/.emacs.d/`.
 
-## Mixins
+## Screenshots
 
-For those who'd like a little more help in tailoring Emacs for specific purposes, the `mixins/` folder contains a few files that can be included via `(load-file "mixin/mixin-name.el")` from the `init.el` file, or copied wholesale or in part into `init.el` directly.
 
-**NOTE:** If you copy the `mixin/` directory to `~/.emacs.d/` or wherever you're setting `user-emacs-directory`, then simply incrementing the appropriate lines in the `init.el` file should work.
 
-Mixins:
+## Extras
+
+For those who'd like a little more help in tailoring Emacs for specific purposes, the `extras/` folder contains a few Emacs Lisp files with example configurations for various packages. You can copy just the config you want into `init.el` or include them wholesale via `(load-file "~/.emacs.d/extras/file-name.el")`.
+
+**NOTE:** If you copy the `extras/` directory to `~/.emacs.d/` or wherever you're setting `user-emacs-directory`, then simply incrementing the appropriate lines in the `init.el` file should work.
+
+Extras:
 
  - Base UI Enhancements
  - Development tools
@@ -68,9 +72,9 @@ Mixins:
  - Email (TODO: mu4e, EBDB)
  - Researcher (TODO: denote)
 
-#### `mixins/base.el`
+#### `extras/base.el`
 
-Packages this mixin adds:
+Packages this extra adds:
 
  - [Avy](https://github.com/abo-abo/avy)
  - [Embark](https://github.com/oantolin/embark)
@@ -86,29 +90,29 @@ These are some of the best UI enhancements that Emacs has to offer. Vertico and 
 
 Avy is the fastest way to move around in a buffer, and it can do a *lot*.[^1] Embark is kind of like a right-click context menu, but entirely keyboard driven.
 
-#### `mixins/dev.el`
+#### `extras/dev.el`
 
-Packages this mixin adds:
+Packages this extra adds:
 
  - [magit](https://magit.vc)
  - Markdown, YAML, and JSON modes
 
 Magit is the best Git interface in the known universe. Some people use Emacs just so they can use Magit. It's that good. Entry point is bound to `C-c g` by default.
 
-Built-in packages that this mixin configures:
+Built-in packages that this extra configures:
 
  - [Eglot](https://github.com/joaotavora/eglot) ([Language Server Protocol (LSP) client](https://microsoft.github.io/language-server-protocol/))
  - Treesit ([Tree-Sitter](https://github.com/tree-sitter) support)
 
 Both of these packages are new in Emacs 29. Be sure to run `M-x treesit-install-language-grammar` to install the language grammar you'll need before editing a file the respective language for the first time.
 
-#### `mixins/vim-like.el`
+#### `extras/vim-like.el`
 
-Packages this mixin adds:
+Packages this extra adds:
 
  - [Evil](https://github.com/emacs-evil/evil)
 
-If you like Vim keybindings, then this is the mixin for you. It configures `evil-mode` and enables it, so you get Vim-like keybindings all throughout Emacs. I understand that this is the best Vim emulation outside of Vim itself. I use `evil-mode` in all my work.
+If you like Vim keybindings, then this is the extra for you. It configures `evil-mode` and enables it, so you get Vim-like keybindings all throughout Emacs. I understand that this is the best Vim emulation outside of Vim itself. I use `evil-mode` in all my work.
 
 Other packages that I use personally, but are not on GNU or non-GNU ELPA and so left out of the config include:
 
@@ -116,24 +120,24 @@ Other packages that I use personally, but are not on GNU or non-GNU ELPA and so 
  - [Evil-Leader](https://github.com/cofi/evil-leader) Setting a prefix (i.e. "leader") key
  - [Origami](https://github.com/gregsexton/origami.el) Code folding
 
-#### `mixins/org.el`
+#### `extras/org.el`
 
-This mixin configures `org-mode`. There is a *lot* that Bedrock cannot configure out of the box—you will need to modify all variables to fit your file system and needs, as explained in comments in the file.
+This extra configures `org-mode`. There is a *lot* that Bedrock cannot configure out of the box—you will need to modify all variables to fit your file system and needs, as explained in comments in the file.
 
-#### `mixins/email.el`
+#### `extras/email.el`
 
 TODO
 
 ## Using
 
-Clone this repository wherever. Then you should copy `early-init.el`, `init.el`, and (optionally, recommended) `mixins/` into your `~/.emacs.d/` repository:
+Clone this repository wherever. Then you should copy `early-init.el`, `init.el`, and (optionally, recommended) `extras/` into your `~/.emacs.d/` repository:
 
 ```bash
 git clone https://git.sr.ht/~ashton314/emacs-bedrock
 mkdir -p ~/.emacs.d/
 cp emacs-bedrock/early-init.el ~/.emacs.d/
 cp emacs-bedrock/init.el ~/.emacs.d/
-cp -r emacs-bedrock/mixins ~/.emacs.d/
+cp -r emacs-bedrock/extras ~/.emacs.d/
 ```
 
 Fire up Emacs and you're good to go!
@@ -163,7 +167,9 @@ Emacs 29.1 is, as of 2023-09-04, the latest stable release. The specific feature
 
 ## Development
 
-This is version `1.0.0`. No new `use-package` declarations will be added to `init.el`. No promises on the mixins. :)
+This is version `1.1.0`.
+
+As of `1.0.0`, no new `use-package` declarations will be added to `init.el`. No promises on the extras. :)
 
 This is a hobby project. Please be patient with development.
 
@@ -174,6 +180,12 @@ I welcome any feedback you may have. You can [open issues](https://todo.sr.ht/~a
 See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHut.
 
 ## Changelog
+
+ - 1.1.0
+ 
+   2023-09-08
+   
+   Rename "mixins" → "extras", as mixin has the flavor of being some kind of special thingy. "Extra" gets at the purpose of these files.
 
  - 1.0.0
  

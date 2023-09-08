@@ -1,11 +1,11 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Mixin: Development tools
+;;; Extra config: Development tools
 
 ;;; Usage: Append or require this file from init.el for some software
 ;;; development-focused packages.
 ;;;
-;;; It is **STRONGLY** recommended that you use the base.el mixin if you want to
+;;; It is **STRONGLY** recommended that you use the base.el config if you want to
 ;;; use Eglot. Lots of completion things will work better.
 ;;;
 ;;; This will try to use tree-sitter modes for many languages. Please run

@@ -1,6 +1,6 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Mixin: Vim emulation
+;;; Extra config: Vim emulation
 
 ;;; Usage: Append or require this file from init.el for bindings in Emacs.
 

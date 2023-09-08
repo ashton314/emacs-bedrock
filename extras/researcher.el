@@ -1,14 +1,14 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Mixin: Researcher
+;;; Extra config: Researcher
 
 ;;; Usage: Append or require this file from init.el for research helps. If you
 ;;; write papers in LaTeX and need to manage your citations or keep track of
 ;;; notes, this package is for you.
 ;;;
-;;; Highly recommended to enable this mixin with the UI enhancements in
+;;; Highly recommended to enable this file with the UI enhancements in
 ;;; `base.el', as citar works best with the Vertico completing-read interface.
-;;; Also recommended is the `writer.el' mixin, which adds some nice features for
+;;; Also recommended is the `writer.el' extra config, which adds some nice features for
 ;;; spell-checking etc.
 
 ;;; Contents:

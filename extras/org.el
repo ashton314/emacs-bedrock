@@ -1,6 +1,6 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Mixin: Org-mode starter config
+;;; Extra config: Org-mode starter config
 
 ;;; Usage: Append or require this file from init.el for some software
 ;;; development-focused packages.

@@ -1,6 +1,6 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Mixin: Base UI enhancements
+;;; Extra config: Base UI enhancements
 
 ;;; Usage: Append or require this file from init.el to enable various UI/UX
 ;;; enhancements.
