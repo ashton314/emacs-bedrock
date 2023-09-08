@@ -55,7 +55,38 @@ Once you're happy, you should just copy `init.el` and `early-init.el` to `~/.ema
 
 ## Screenshots
 
+What you should see on opening Emacs up with Bedrock installed: a simple splash screen, [modus-vivendi](https://protesilaos.com/emacs/modus-themes) active, and the `help-quick` display at the bottom.
 
+![Emacs using Bedrock configuration showing the splash screen with the quick help at the bottom](screenshots/basic_splash.png)
+
+Basic code editing: line numbers and `hl-line-mode`.
+
+![Editing the source code of Emacs Bedrock's init.el file while using Bedrock configuration](screenshots/basic_code_editing.png)
+
+`which-key` package in action: hit `C-x` and wait for a second to get a pop-up window of what all next available keybindings are.
+
+![Which key package in motion](screenshots/which_key.gif)
+
+[Movie of `which-key` in motion](screenshots/which_key.mov)
+
+Basic completion: hit `TAB` twice to pull up the `*Completions*` buffer, then `TAB` once again to automatically put the cursor into that buffer. (Configurable to pull up and auto-select faster, of course, but this behaves closer to the stock Emacs experience.)
+
+![Still from the built-in completion interface, new with Emacs 29.1](screenshots/basic_builtin_completion.png)
+
+Basic completion interface in action.
+
+![GIF of the completion interface in action](screenshots/basic_completion.gif)
+
+[Movie of the completion interface in action](screenshots/basic_completion.mov)
+
+A bunch of bells and whistles:
+
+ - Vertico completion framework enabled (`base.el` extra)
+ - Consult enabled for buffer-switching preview (`base.el` extra)
+ - Corfu completion-at-point enabled (`base.el` extra)
+ - Smooth scrolling (enabled by default)
+
+[Movie of all the bells and whistles turned on](screenshots/everything_demo.mov)
 
 ## Extras
 
