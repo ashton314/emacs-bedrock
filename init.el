@@ -36,6 +36,9 @@
 ;;
 ;;    https://melpa.org/#/getting-started
 ;;
+;; You can simply uncomment the following if you'd like to get started with
+;; MELPA packages quickly:
+;;
 ;; (with-eval-after-load 'package
 ;;   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 

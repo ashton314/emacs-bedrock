@@ -4,7 +4,11 @@
 
 ;;; Usage: Append or require this file from init.el for research helps. If you
 ;;; write papers in LaTeX and need to manage your citations or keep track of
-;;; notes, this package is for you.
+;;; notes, this set of packages is for you.
+;;;
+;;; NOTE: the packages citar and org-roam live on the MELPA repository; you will
+;;; need to update the `package-archives' variable in init.el before before
+;;; loading this; see the comment in init.el under "Package initialization".
 ;;;
 ;;; Highly recommended to enable this file with the UI enhancements in
 ;;; `base.el', as citar works best with the Vertico completing-read interface.
