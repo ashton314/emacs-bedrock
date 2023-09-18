@@ -33,11 +33,12 @@
 ;; Consult: Misc. enhanced commands
 (use-package consult
   :ensure t
-  ;; Other good things to bind: consult-ripgrep, consult-line-multi,
-  ;; consult-history, consult-outline
-  :bind (("C-x b" . consult-buffer) ; orig. switch-to-buffer
-         ("M-y" . consult-yank-pop) ; orig. yank-pop
-         ("C-s" . consult-line))    ; orig. isearch
+  ;; Other good things to bind: consult-line-multi, consult-history,
+  ;; consult-outline, consult-org-agenda, etc.
+  :bind (("C-x b" . consult-buffer)  ; orig. switch-to-buffer
+         ("M-y" . consult-yank-pop)  ; orig. yank-pop
+         ("M-s r" . consult-ripgrep)
+         ("C-s" . consult-line))     ; orig. isearch
   :config
   ;; Narrowing lets you restrict results to certain groups of candidates
   (setq consult-narrow-key "<"))
