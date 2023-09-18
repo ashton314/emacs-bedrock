@@ -1,6 +1,6 @@
 ;;; Emacs Bedrock
 ;;;
-;;; Extra config: Base UI enhancements
+;;; Extra config: Base enhancements
 
 ;;; Usage: Append or require this file from init.el to enable various UI/UX
 ;;; enhancements.
@@ -10,6 +10,7 @@
 ;;;  - Motion aids
 ;;;  - Power-ups: Embark and Consult
 ;;;  - Minibuffer and completion
+;;;  - Misc. editing enhancements
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -132,3 +133,15 @@
   :ensure t
   :config
   (setq completion-styles '(orderless)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Misc. editing enhancements
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Modify search results en masse
+(use-package wgrep
+  :ensure t
+  :config
+  (setq wgrep-auto-save-buffer t))

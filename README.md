@@ -114,12 +114,15 @@ Packages this extra adds:
  - [Corfu](https://github.com/minad/corfu)
  - [Consult](https://github.com/minad/consult)
  - [Orderless](https://github.com/oantolin/orderless)
+ - [wgrep](https://github.com/mhayashi1120/Emacs-wgrep)
 
 Along with a few ancillary packages that enhance the above.
 
 These are some of the best UI enhancements that Emacs has to offer. Vertico and Consult make common operations like searching files, switching buffers, etc. a breeze. Corfu enhances the "completion at point" (aka "tab-to-complete") to show a little popup window like what you'd be used to in e.g. VS Code. 
 
 Avy is the fastest way to move around in a buffer, and it can do a *lot*.[^1] Embark is kind of like a right-click context menu, but entirely keyboard driven.
+
+wgrep makes grep buffers editable. This means you can `consult-ripgrep` → search project → `embark-act` → `embark-export` → `wgrep-change-to-wgrep-mode` to do search-and-replace across an entire project in one fell swoop. See [Warp Factor Refactoring](https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/) for more on this workflow.
 
 #### `extras/dev.el`
 
