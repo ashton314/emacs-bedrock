@@ -215,6 +215,10 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
 
 ## Changelog
 
+ - Development
+
+   Change magit keybinding to standard `C-x g`; drop non-standard ones. (Thanks Vincent Conus!)
+
  - 1.2.0
 
    2023-09-21
@@ -265,6 +269,15 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
 
 ## Authors
 
+Creator and maintainer:
+
  - Ashton Wiersdorf https://lambdaland.org
+
+Contributors:
+
+ - George Kettleborough
+ - Enzo Do Rosario
+ - Ed Singleton
+ - Vincent Conus
 
 [^1]: https://karthinks.com/software/avy-can-do-anything/
