@@ -118,6 +118,14 @@
   :config
   (corfu-terminal-mode))
 
+;; Fancy completion-at-point functions; there's too much in the cape package to
+;; configure here; dive in when you're comfortable!
+(use-package cape
+  :ensure t
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
+
 ;; Pretty icons for corfu
 (use-package kind-icon
   :if (display-graphic-p)
