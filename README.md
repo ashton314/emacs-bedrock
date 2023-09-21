@@ -19,15 +19,15 @@ An *extremely* minimal Emacs starter kit uses just one external package by defau
 This is a minimal Emacs starter kit. Like, *really* minimal. Here's the short of the philosophy:
 
  - Focus on using default, built-in Emacs behavior
- 
+
    Yes, we all love our fancy third-party packages. This starter kit focuses on what is built-in to Emacs. Why? Because there are too many good packages and picking and choosing the best is a joy we leave to the user.
 
  - Explain every customization and encourage modification
- 
+
    The goal of this starter kit is to encourage end-user adaptation and growth. All of the `.el` files should be legible and, more importantly, justify in plain English the rationale for adding the configuration they do.
-   
+
  - No magic
- 
+
    We keep things *crushingly* simple here. That means no fancy loadable modules or whatnot. Everything is as straight-forward as can be.
 
 There are two files of interest: `early-init.el` and `init.el`.
@@ -118,7 +118,7 @@ Packages this extra adds:
 
 Along with a few ancillary packages that enhance the above.
 
-These are some of the best UI enhancements that Emacs has to offer. Vertico and Consult make common operations like searching files, switching buffers, etc. a breeze. Corfu enhances the "completion at point" (aka "tab-to-complete") to show a little popup window like what you'd be used to in e.g. VS Code. 
+These are some of the best UI enhancements that Emacs has to offer. Vertico and Consult make common operations like searching files, switching buffers, etc. a breeze. Corfu enhances the "completion at point" (aka "tab-to-complete") to show a little popup window like what you'd be used to in e.g. VS Code.
 
 Avy is the fastest way to move around in a buffer, and it can do a *lot*.[^1] Embark is kind of like a right-click context menu, but entirely keyboard driven.
 
@@ -201,7 +201,7 @@ Emacs 29.1 is, as of 2023-09-04, the latest stable release. The specific feature
 
 ## Development
 
-This is version `1.1.0`.
+This is version `1.2.0`.
 
 As of `1.0.0`, no new `use-package` declarations will be added to `init.el`. No promises on the extras. :)
 
@@ -215,34 +215,40 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
 
 ## Changelog
 
+ - 1.2.0
+
+   2023-09-21
+
+   Add packages [Cape](https://github.com/minad/cape) (+ basic configuration) and wgrep. Add a binding for `consult-ripgrep`.
+
  - 1.1.0
- 
+
    2023-09-08
-   
+
    Rename "mixins" → "extras", as mixin has the flavor of being some kind of special thingy. "Extra" gets at the purpose of these files.
 
  - 1.0.0
- 
+
    2023-09-04
-   
+
    First "stable" release! Line number width improved, fix default load paths, expand Eglot and Vertico config, fix Corfu load.
 
  - 0.2.1
 
    2023-06-20
-   
+
    Minor bug fixes; add Embark package.
 
  - 0.2.0
- 
+
    2023-03-14
-   
+
    Flesh out the `mixin/vim-like.el` so that there's *some* Vim configuration.
 
  - 0.1.0
- 
+
    2023-01-17
-   
+
    Begin work on `mixin/org.el`, turn on windmove-mode.
 
  - 0.0.2
@@ -254,7 +260,7 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
  - 0.0.1
 
    2023-01-03
- 
+
    Initial "release".
 
 ## Authors
