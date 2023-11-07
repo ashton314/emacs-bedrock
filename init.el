@@ -49,7 +49,10 @@
 (setq display-time-default-load-average nil) ; this information is useless for most
 
 ;; Automatically reread from disk if the underlying file changes
-(setq auto-revert-interval 1)
+(customize-set-variable 'auto-revert-avoid-polling t)
+;; Some systems don't do file notifications well; see
+;; https://todo.sr.ht/~ashton314/emacs-bedrock/11
+(setq auto-revert-interval 5)
 (setq auto-revert-check-vc-info t)
 (global-auto-revert-mode)
 
@@ -118,8 +121,10 @@ If the new path's directories does not exist, create them."
 
 (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
-;; For a fancier built-in completion option, try ido-mode or fido-mode. See also
-;; the file extras/base.el
+;; For a fancier built-in completion option, try ido-mode,
+;; icomplete-vertical, or fido-mode. See also the file extras/base.el
+
+;(icomplete-vertical-mode)
 ;(fido-vertical-mode)
 ;(setq icomplete-delay-completions-threshold 4000)
 
