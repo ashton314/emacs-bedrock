@@ -6,18 +6,18 @@
 ;;; write papers in LaTeX and need to manage your citations or keep track of
 ;;; notes, this set of packages is for you.
 ;;;
-;;; Denote is a simpler alternative to org-roam: instead of maintaining a
+;;; Denote is a simpler alternative to Org-roam: instead of maintaining a
 ;;; database along side your files, Denote works by enforcing a particular file
 ;;; naming strategy. This makes it easy to link and tag notes, much in the same
-;;; way that org-roam does. It's generally advisable to not mix org-roam and
+;;; way that Org-roam does. It's generally advisable to not mix Org-roam and
 ;;; Denote in the same directory.
 ;;;
-;;; NOTE: the packages citar and org-roam live on the MELPA repository; you will
+;;; NOTE: the packages Citar and Org-roam live on the MELPA repository; you will
 ;;; need to update the `package-archives' variable in init.el before before
 ;;; loading this; see the comment in init.el under "Package initialization".
 ;;;
 ;;; Highly recommended to enable this file with the UI enhancements in
-;;; `base.el', as citar works best with the Vertico completing-read interface.
+;;; `base.el', as Citar works best with the Vertico completing-read interface.
 ;;; Also recommended is the `writer.el' extra config, which adds some nice features for
 ;;; spell-checking etc.
 
@@ -25,7 +25,7 @@
 ;;;
 ;;;  - Citation Management
 ;;;  - Authoring
-;;;  - Note Taking: Org-Roam
+;;;  - Note Taking: Org-roam
 ;;;  - Note Taking: Denote
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -34,7 +34,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; These variables must be set for citar to work properly!
+;;; These variables must be set for Citar to work properly!
 
 (setopt citar-bibliography '("~/refs.bib")) ; paths to your bibtex files
 
@@ -59,7 +59,7 @@
                                (t . find-file))))
 
 ;; Optional: if you have the embark package installed, enable the ability to act
-;; on citations with citar by invoking `embark-act'.
+;; on citations with Citar by invoking `embark-act'.
 ;(use-package citar-embark
 ;  :after citar embark
 ;  :diminish ""
@@ -68,7 +68,7 @@
 
 (use-package citar-org-roam
   :diminish ""
-  ;; To get this to work both citar *and* org-roam have to have been used
+  ;; To get this to work both Citar *and* Org-roam have to have been used
   :after citar org-roam
   :no-require
   :config
@@ -83,7 +83,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Note Taking: Org-Roam
+;;;   Note Taking: Org-roam
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
