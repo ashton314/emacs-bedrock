@@ -6,6 +6,12 @@
 ;;; write papers in LaTeX and need to manage your citations or keep track of
 ;;; notes, this set of packages is for you.
 ;;;
+;;; Denote is a simpler alternative to org-roam: instead of maintaining a
+;;; database along side your files, Denote works by enforcing a particular file
+;;; naming strategy. This makes it easy to link and tag notes, much in the same
+;;; way that org-roam does. It's generally advisable to not mix org-roam and
+;;; Denote in the same directory.
+;;;
 ;;; NOTE: the packages citar and org-roam live on the MELPA repository; you will
 ;;; need to update the `package-archives' variable in init.el before before
 ;;; loading this; see the comment in init.el under "Package initialization".
@@ -30,7 +36,10 @@
 
 ;;; These variables must be set for citar to work properly!
 
-(setq citar-bibliography '("~/refs.bib")) ; paths to your bibtex files
+(setopt citar-bibliography '("~/refs.bib")) ; paths to your bibtex files
+
+;;; These variables are needed for Denote
+;(setopt denote-directory (expand-file-name "~/Docs/denote-notes/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -97,4 +106,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; TODO
+(use-package denote
+  :config
+  ;; Accept any symbol in a .dir-locals.el file; makes it easier to use silos.
+  ;; See "silos" in the manual: https://protesilaos.com/emacs/denote
+  (put 'denote-file-type 'safe-local-variable-p 'symbolp)
+  )
