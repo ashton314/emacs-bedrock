@@ -81,6 +81,10 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Helpful resources:
+;;
+;;  - https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc
+
 (use-package eglot
   ;; no :ensure t here because it's built-in
 
@@ -90,6 +94,7 @@
 
   :custom
   (eglot-send-changes-idle-time 0.1)
+  (eglot-extend-to-xref t)              ; activate Eglot in referenced non-project files
 
   :config
   (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event

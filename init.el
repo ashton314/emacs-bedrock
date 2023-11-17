@@ -21,6 +21,11 @@
 ;;;  - Optional extras
 ;;;  - Built-in customization framework
 
+;;; Guardrail
+
+(when (< emacs-major-version 29)
+  (error (format "Emacs Bedrock only works with Emacs 29 and newer; you have version ~a" emacs-major-version)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Basic settings
