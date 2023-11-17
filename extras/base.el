@@ -4,6 +4,16 @@
 
 ;;; Usage: Append or require this file from init.el to enable various UI/UX
 ;;; enhancements.
+;;;
+;;; The consult package in particular has a vast number of functions that you
+;;; can use as replacements to what Emacs provides by default. Please see the
+;;; consult documentation for more information and help:
+;;;
+;;;     https://github.com/minad/consult
+;;;
+;;; In particular, many users may find `consult-line' to be more useful to them
+;;; than isearch, so binding this to `C-s' might make sense. This is left to the
+;;; user to configure, however, as isearch and consult-line are not equivalent.
 
 ;;; Contents:
 ;;;
@@ -33,12 +43,23 @@
 ;; Consult: Misc. enhanced commands
 (use-package consult
   :ensure t
-  ;; Other good things to bind: consult-line-multi, consult-history,
-  ;; consult-outline, consult-org-agenda, etc.
-  :bind (("C-x b" . consult-buffer)  ; orig. switch-to-buffer
-         ("M-y" . consult-yank-pop)  ; orig. yank-pop
+  :bind (
+         ;; Drop-in replacements
+         ("C-x b" . consult-buffer)     ; orig. switch-to-buffer
+         ("M-y"   . consult-yank-pop)   ; orig. yank-pop
+         ;; Searching
          ("M-s r" . consult-ripgrep)
-         ("C-s" . consult-line))     ; orig. isearch
+         ("M-s l" . consult-line)       ; Alternative: rebind C-s to use
+         ("M-s s" . consult-line)       ; consult-line instead of isearch, bind
+         ("M-s L" . consult-line-multi) ; isearch to M-s s
+         ("M-s o" . consult-outline)
+         ;; Isearch integration
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)   ; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history) ; orig. isearch-edit-string
+         ("M-s l" . consult-line)            ; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)      ; needed by consult-line to detect isearch
+         )
   :config
   ;; Narrowing lets you restrict results to certain groups of candidates
   (setq consult-narrow-key "<"))
