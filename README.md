@@ -100,10 +100,10 @@ Extras:
  - Development tools
  - Org-mode
  - Vim refugee
+ - Researcher
  - Email (TODO: mu4e, EBDB)
- - Researcher (TODO: denote)
 
-#### `extras/base.el`
+#### Base UI Enhancements: `extras/base.el`
 
 Packages this extra adds:
 
@@ -124,7 +124,7 @@ Avy is the fastest way to move around in a buffer, and it can do a *lot*.[^1] Em
 
 wgrep makes grep buffers editable. This means you can `consult-ripgrep` → search project → `embark-act` → `embark-export` → `wgrep-change-to-wgrep-mode` to do search-and-replace across an entire project in one fell swoop. See [Warp Factor Refactoring](https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/) for more on this workflow.
 
-#### `extras/dev.el`
+#### Development tools: `extras/dev.el`
 
 Packages this extra adds:
 
@@ -138,9 +138,13 @@ Built-in packages that this extra configures:
  - [Eglot](https://github.com/joaotavora/eglot) ([Language Server Protocol (LSP) client](https://microsoft.github.io/language-server-protocol/))
  - Treesit ([Tree-Sitter](https://github.com/tree-sitter) support)
 
-Both of these packages are new in Emacs 29. Be sure to run `M-x treesit-install-language-grammar` to install the language grammar you'll need before editing a file the respective language for the first time.
+Both of these packages are new in Emacs 29. **Be sure to run `M-x treesit-install-language-grammar` to install the language grammar you'll need before editing a file the respective language for the first time!** This is a quirk of how the built-in tree-sitter works; packages like [treesit-auto](https://github.com/renzmann/treesit-auto) can help with this if it becomes too much of an annoyance.
 
-#### `extras/vim-like.el`
+#### Org-mode: `extras/org.el`
+
+This extra configures `org-mode`. There is a *lot* that Bedrock cannot configure out of the box—you will need to modify all variables to fit your file system and needs, as explained in comments in the file.
+
+#### Vim refugee: `extras/vim-like.el`
 
 Packages this extra adds:
 
@@ -154,11 +158,23 @@ Other packages that I use personally, but are not on GNU or non-GNU ELPA and so 
  - [Evil-Leader](https://github.com/cofi/evil-leader) Setting a prefix (i.e. "leader") key
  - [Origami](https://github.com/gregsexton/origami.el) Code folding
 
-#### `extras/org.el`
+#### Researcher: `extras/researcher.el`
 
-This extra configures `org-mode`. There is a *lot* that Bedrock cannot configure out of the box—you will need to modify all variables to fit your file system and needs, as explained in comments in the file.
+Packages this extra includes:
 
-#### `extras/email.el`
+ - [Citar](https://github.com/emacs-citar/citar)
+ - [Org-roam](https://www.orgroam.com/)
+ - [Denote](https://protesilaos.com/emacs/denote)
+
+Citar provides a completing-read interface into your bibliography and can automatically insert citations in LaTeX, Markdown, and org-mode.
+
+Org-roam is a personal knowledge management system; effectively a port of the popular [Roam](https://roamresearch.com/) note taking system.
+
+Denote is a simple note taking system that doesn't rely on any tools except some common Unix utilities like `grep` and `find`.
+
+Citar and Org-roam both live in [Melpa](https://melpa.org/), so you will need to [add Melpa to your package-archives](https://melpa.org/#/getting-started).
+
+#### Email `extras/email.el`
 
 TODO
 
@@ -201,13 +217,13 @@ Emacs 29.1 is, as of 2023-09-04, the latest stable release. The specific feature
 
 ## Development
 
-This is version `1.2.0`.
+This is version `1.3.0`.
 
-As of `1.0.0`, no new `use-package` declarations will be added to `init.el`. No promises on the extras. :)
-
-This is a hobby project. Please be patient with development.
+As of `1.0.0`, no new `use-package` declarations will be added to `init.el`. No promises on the extras! 
 
 I welcome any feedback you may have. You can [open issues](https://todo.sr.ht/~ashton314/emacs-bedrock) or [drop me a line](https://lambdaland.org/#contact) directly with any comments or suggestions.
+
+Thanks to all the folks who have contributed suggestions and bug reports. Thank you also for being patient with me as I work on this project as a hobby. :)
 
 ### Roadmap
 
@@ -215,9 +231,15 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
 
 ## Changelog
 
- - Development
+ - 1.3.0
 
    Change magit keybinding to standard `C-x g`; drop non-standard ones. (Thanks Vincent Conus!)
+
+   Don't set `C-s` to `consult-line` in `extras/base.el`; instead, use the recommended keybindings from the Consult manual. (Thanks Enzo Do rosario, Niluge kiwi, and Preston Hunt for discussion!)
+
+   Add sample Denote config.
+
+   Improve latency by slowing down auto-revert polling. (Thanks Jeff Johnson!)
 
  - 1.2.0
 
