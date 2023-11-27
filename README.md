@@ -217,7 +217,7 @@ Emacs 29.1 is, as of 2023-09-04, the latest stable release. The specific feature
 
 ## Development
 
-This is version `1.3.0`.
+This is version `1.3.1`.
 
 As of `1.0.0`, no new `use-package` declarations will be added to `init.el`. No promises on the extras! 
 
@@ -231,11 +231,15 @@ See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHu
 
 ## Changelog
 
+ - 1.3.1
+ 
+   Fix consult-history binding in Eshell to not override `isearch-backwards`. (#13)
+
  - 1.3.0
 
    Change magit keybinding to standard `C-x g`; drop non-standard ones. (Thanks Vincent Conus!)
 
-   Don't set `C-s` to `consult-line` in `extras/base.el`; instead, use the recommended keybindings from the Consult manual. (Thanks Enzo Do rosario, Niluge kiwi, and Preston Hunt for discussion!)
+   Don't set `C-s` to `consult-line` in `extras/base.el`; instead, use the recommended keybindings from the Consult manual. (Thanks Enzo Do rosario, Thomas Riccardi, and Preston Hunt for discussion!)
 
    Add sample Denote config.
 
