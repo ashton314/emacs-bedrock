@@ -6,11 +6,11 @@ Stepping stones to a better Emacs experience
 
 An *extremely* minimal Emacs starter kit uses just one external package by default, and only GNU-ELPA packages on an opt-in basis. Intended to be copied once and then modified as the user grows in knowledge and power.
 
- - [Project homepage](https://sr.ht/~ashton314/emacs-bedrock/)
- - [Issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock)
- - [Mailing list](https://lists.sr.ht/~ashton314/emacs-bedrock)
- - Mirrors:
-   - [GitHub](https://github.com/ashton314/emacs-bedrock) (just a place holder)
+As of 2024-02-07, Bedrock is officially hosted on [Codeberg](https://codeberg.org/ashton314/emacs-bedrock).
+
+Mirrors:
+ - [Old project on SourceHut](https://sr.ht/~ashton314/emacs-bedrock/)
+ - [GitHub](https://github.com/ashton314/emacs-bedrock) (just a place holder)
 
 **NOTICE:** Requires Emacs 29.1 or better.
 
