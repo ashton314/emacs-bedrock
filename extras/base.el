@@ -126,6 +126,7 @@
 ;; Part of corfu
 (use-package corfu-popupinfo
   :after corfu
+  :ensure nil
   :hook (corfu-mode . corfu-popupinfo-mode)
   :custom
   (corfu-popupinfo-delay '(0.25 . 0.1))
