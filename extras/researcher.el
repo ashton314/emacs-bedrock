@@ -2,30 +2,28 @@
 ;;;
 ;;; Extra config: Researcher
 
-;;; Usage: Append or require this file from init.el for research helps. If you
-;;; write papers in LaTeX and need to manage your citations or keep track of
-;;; notes, this set of packages is for you.
+;;; Usage: Append or require this file from init.el for research
+;;; helps. If you write papers in LaTeX and need to manage your
+;;; citations or keep track of notes, this set of packages is for you.
 ;;;
-;;; Denote is a simpler alternative to Org-roam: instead of maintaining a
-;;; database along side your files, Denote works by enforcing a particular file
-;;; naming strategy. This makes it easy to link and tag notes, much in the same
-;;; way that Org-roam does. It's generally advisable to not mix Org-roam and
-;;; Denote in the same directory.
+;;; Denote is a note taking package that facilitates a Zettelkasten
+;;; method. Denote works by enforcing a particular file naming
+;;; strategy. This makes it easy to link and tag notes.
 ;;;
-;;; NOTE: the packages Citar and Org-roam live on the MELPA repository; you will
-;;; need to update the `package-archives' variable in init.el before before
-;;; loading this; see the comment in init.el under "Package initialization".
+;;; NOTE: the Citar package lives on the MELPA repository; you will
+;;; need to update the `package-archives' variable in init.el before
+;;; before loading this; see the comment in init.el under "Package
+;;; initialization".
 ;;;
 ;;; Highly recommended to enable this file with the UI enhancements in
-;;; `base.el', as Citar works best with the Vertico completing-read interface.
-;;; Also recommended is the `writer.el' extra config, which adds some nice features for
-;;; spell-checking etc.
+;;; `base.el', as Citar works best with the Vertico completing-read
+;;; interface. Also recommended is the `writer.el' extra config, which
+;;; adds some nice features for spell-checking etc.
 
 ;;; Contents:
 ;;;
 ;;;  - Citation Management
 ;;;  - Authoring
-;;;  - Note Taking: Org-roam
 ;;;  - Note Taking: Denote
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -39,7 +37,7 @@
 (setopt citar-bibliography '("~/refs.bib")) ; paths to your bibtex files
 
 ;;; These variables are needed for Denote
-;(setopt denote-directory (expand-file-name "~/Docs/denote-notes/"))
+(setopt denote-directory (expand-file-name "~/Documents/notes/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -66,39 +64,13 @@
 ;  :no-require
 ;  :config (citar-embark-mode))
 
-(use-package citar-org-roam
-  :diminish ""
-  ;; To get this to work both Citar *and* Org-roam have to have been used
-  :after citar org-roam
-  :no-require
-  :config
-  (citar-org-roam-mode)
-  (setq citar-org-roam-note-title-template "${author} - ${title}\n#+filetags: ${tags}"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Authoring
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Note Taking: Org-roam
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package org-roam
-  :ensure t
-  :config
-  ;; Make sure the backlinks buffer always shows up in a side window
-  (add-to-list 'display-buffer-alist
-               '("\\*org-roam\\*"
-                 (display-buffer-in-side-window)
-                 (side . right)
-                 (window-width . 0.4)
-                 (window-height . fit-window-to-buffer)))
-
-  (org-roam-db-autosync-mode))
+;; TODO; package or configuration suggestions welcome
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -106,9 +78,31 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Denote is a simple but powerful note-taking system that relies on a
+;; file-naming schema to make searching and finding notes easily. The
+;; Denote package provides commands that make the note taking scheme
+;; easy to follow. See the manual at:
+;;
+;;     https://protesilaos.com/emacs/denote
+;;
 (use-package denote
   :config
-  ;; Accept any symbol in a .dir-locals.el file; makes it easier to use silos.
-  ;; See "silos" in the manual: https://protesilaos.com/emacs/denote
-  (put 'denote-file-type 'safe-local-variable-p 'symbolp)
-  )
+  (denote-rename-buffer-mode)
+  (require 'denote-journal-extras))
+
+;; Integrate citar and Denote: take notes on bibliographic entries
+;; through Denote
+(use-package citar-denote
+  :after (:any citar denote)
+  :custom
+  (citar-denote-file-type 'org)
+  (citar-denote-keyword "bib")
+  (citar-denote-signature nil)
+  (citar-denote-subdir "")
+  (citar-denote-template nil)
+  (citar-denote-title-format "title")
+  (citar-denote-title-format-andstr "and")
+  (citar-denote-title-format-authors 1)
+  (citar-denote-use-bib-keywords t)
+  :init
+  (citar-denote-mode))
