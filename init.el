@@ -252,3 +252,5 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setq gc-cons-threshold (or bedrock--initial-gc-threshold 800000))
