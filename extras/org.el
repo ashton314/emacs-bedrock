@@ -119,7 +119,9 @@
 (use-package org
   :config
   ;; Instead of just two states (TODO, DONE) we set up a few different states
-  ;; that a task can be in.
+  ;; that a task can be in. Run
+  ;;     M-x describe-variable RET org-todo-keywords RET
+  ;; for documentation on how these keywords work.
   (setq org-todo-keywords
         '((sequence "TODO(t)" "WAITING(w@/!)" "STARTED(s!)" "|" "DONE(d!)" "OBSOLETE(o@)")))
 
@@ -140,37 +142,20 @@
           ("wr" "Work report" entry (file+headline "work.org" "Reports")
            "** TODO %?\n%U\n%i\n%a")))
 
-    (setq org-agenda-custom-commands
-          '(("n" "Agenda and All Todos"
-             ((agenda)
-              (todo)))
-            ("w" "Work" agenda ""
-             ((org-agenda-files '("work.org")))))))
+  ;; An agenda view lets you see your TODO items filtered and
+  ;; formatted in different ways. You can have multiple agenda views;
+  ;; please see the org-mode documentation for more information.
+  (setq org-agenda-custom-commands
+        '(("n" "Agenda and All Todos"
+           ((agenda)
+            (todo)))
+          ("w" "Work" agenda ""
+           ((org-agenda-files '("work.org")))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Phase 3: extensions (org-roam, etc.)
+;;;   Phase 3: extensions
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package org-roam
-  :ensure t
-  :config
-  (org-roam-db-autosync-mode)
-  ;; Dedicated side window for backlinks
-  (add-to-list 'display-buffer-alist
-               '("\\*org-roam\\*"
-                 (display-buffer-in-side-window)
-                 (side . right)
-                 (window-width . 0.4)
-                 (window-height . fit-window-to-buffer))))
-
-;; Pretty web interface for org-roam
-;(use-package org-roam-ui
-;  :ensure t
-;  :after org-roam
-;  :config
-;  (setq org-roam-ui-sync-theme t
-;        org-roam-ui-follow t
-;        org-roam-ui-update-on-save t
-;        org-roam-ui-open-on-start t))
+;; TODO
