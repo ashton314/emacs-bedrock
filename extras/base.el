@@ -64,6 +64,8 @@
   ;; Narrowing lets you restrict results to certain groups of candidates
   (setq consult-narrow-key "<"))
 
+;; Embark: supercharged context-dependent menu; kinda like a
+;; super-charged right-click.
 (use-package embark
   :ensure t
   :demand t
@@ -112,7 +114,7 @@
   :config
   (marginalia-mode))
 
-;; Popup completion-at-point
+;; Corfu: Popup completion-at-point
 (use-package corfu
   :ensure t
   :init
