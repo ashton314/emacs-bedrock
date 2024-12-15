@@ -163,16 +163,24 @@ Other packages that I use personally, but are not on GNU or non-GNU ELPA and so 
 Packages this extra includes:
 
  - [Citar](https://github.com/emacs-citar/citar)
- - [Org-roam](https://www.orgroam.com/)
  - [Denote](https://protesilaos.com/emacs/denote)
 
 Citar provides a completing-read interface into your bibliography and can automatically insert citations in LaTeX, Markdown, and org-mode.
 
-Org-roam is a personal knowledge management system; effectively a port of the popular [Roam](https://roamresearch.com/) note taking system.
-
 Denote is a simple note taking system that doesn't rely on any tools except some common Unix utilities like `grep` and `find`.
 
-Citar and Org-roam both live in [Melpa](https://melpa.org/), so you will need to [add Melpa to your package-archives](https://melpa.org/#/getting-started).
+Citar lives in [Melpa](https://melpa.org/), so you will need to [add Melpa to your package-archives](https://melpa.org/#/getting-started).
+
+#### Writing: `extras/writer.el`
+
+Packages this extra adds:
+
+ - [Jinx](https://github.com/minad/jinx)
+ - [Olivetti](https://github.com/rnkn/olivetti)
+
+Jinx is the spell-checker you will wish every program had.
+
+Olivetti automatically balances window margins so your text stays nice and centered—handy for wide monitors.
 
 #### Email `extras/email.el`
 
@@ -227,9 +235,15 @@ Thanks to all the folks who have contributed suggestions and bug reports. Thank 
 
 ### Roadmap
 
-See the [issue tracker](https://todo.sr.ht/~ashton314/emacs-bedrock) on SourceHut.
+See the [issue tracker](https://codeberg.org/ashton314/emacs-bedrock/issues) on Codeberg.
 
 ## Changelog
+
+ - 1.4.0
+
+   2024-12-14
+
+   Add `extras/writer.el`.
 
  - 1.3.1
  
